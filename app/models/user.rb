@@ -13,7 +13,14 @@
 #
 
 class User < ActiveRecord::Base
+  require 'openssl'
+  require 'base64'
+
   has_many :photos, :dependent => :destroy
+  
+  def twitter_password=password
+    self[:twitter_password]=nil
+  end
   
   def self.twitter_auth(username, password)
     User.find_by_twitter_username_and_twitter_password(username, password)
@@ -25,5 +32,11 @@ class User < ActiveRecord::Base
     Twitter::Base.new(httpauth)
   end
   memoize :twitter_api
+
+  def get_flickr_id(flickr_username)
+    flickr_api = Flickr.new(FLICKR.merge(:token => flickr_token))
+    p = flickr_api.people.find_by_username(flickr_username)
+    p.nsid
+  end
   
 end
