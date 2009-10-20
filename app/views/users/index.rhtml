@@ -1,0 +1,9 @@
+<%- if !@users.blank? -%>
+  <%- for user in @users -%>
+    <% div_for user do %>
+      <p><em>Short URL</em> <%= link_to user.twitter_username, user.url %></p>
+    <% end -%>
+  <%- end -%>
+<%- else -%>
+  <p>None</p>
+<%- end -%>

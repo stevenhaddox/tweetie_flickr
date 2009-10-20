@@ -1,0 +1,24 @@
+<%- form_for @user, :html => { :multipart => true } do |f| -%>
+  <%= f.error_messages %>
+  <%- field_set_tag "Twitter" do -%>
+    <div class="Twitter username required">
+      <%= label_tag :twitter_username, "Twitter Username" %>
+      <%= f.text_field :twitter_username %>
+    </div>
+    <div class="Twitter password (temporarily) required">
+      <%= label_tag :twitter_password, "Twitter Password" %>
+      <%= f.password_field :twitter_password %>
+    </div>
+  <%- end -%>
+  <%- field_set_tag "Flickr" do -%>
+    <div class="Flickr username required">
+      <%= label_tag :flickr_username, "Flickr Username" %>
+      <%= f.text_field :flickr_user_id %>
+    </div>
+  <%- end -%>
+  <%- field_set_tag do -%>
+    <div class="submit field">
+      <%= f.submit "Save" %>
+    </div>
+  <%- end -%>
+<%- end -%>
