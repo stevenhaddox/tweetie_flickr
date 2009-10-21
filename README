@@ -1,13 +1,21 @@
 For use with Tweetie 2 and its new custom image service
 http://developer.atebits.com/tweetie-iphone/custom-image
 
-I currently have this running for my own personal use and I don't really
-have any plans to make a public service out of it unless I get a lot
-of interest in doing so. So the next best thing I thought to do would
-be to provide the source and you can do what you want with it.
+This is originally forked from ebonical's tweetie_flickr project on github:
+http://github.com/ebonical/tweetie_flickr
 
-I pushed mine to http://heroku.com it's awesome.
+This version has been modified to utilize Twitter OAuth for user authent-
+ication. It only makes sense as anyone using this should have a Twitter
+account.
 
+Flickr4Twitter (@flickr4tw1tter) merely serves as a way to upload images
+from Tweetie 2 to Flickr.com after you have authenticated with both 
+services. There are plans for future clients, APIs, and a better user-
+interface in the near future.
+
+Flickr4Twitter is an open-source project and you are more than welcome
+to run your own version on your own server if you prefer. I'd love it if
+you let me know if you use it.
 
 Check list
 ==========
@@ -16,11 +24,14 @@ Create a user with twitter credentials
 - if User#test_user is true then photos will be private (for testing)
 
 Get Flickr user ID - try here http://idgettr.com
+You can also use @user.get_flickr_id(flickr_username)
 
 Get Flickr API key+secret
 Put these into config/flickr.yml
 Authenticate your Flickr account for write access
 Get your token and store it against the user record
+
+Authorize the application via Twitter's OAuth for user management.
 
 Set a secret session key for Rails in config/secret
 - use `rake secret` to get a new key
