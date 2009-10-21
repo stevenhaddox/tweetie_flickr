@@ -18,9 +18,9 @@ class User < ActiveRecord::Base
 
   has_many :photos, :dependent => :destroy
   
-  def twitter_password=password
-    self[:twitter_password]=nil
-  end
+#  def twitter_password=password
+#    self[:twitter_password]=nil
+#  end
   
   def self.twitter_auth(username, password)
     User.find_by_twitter_username_and_twitter_password(username, password)
