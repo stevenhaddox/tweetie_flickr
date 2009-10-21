@@ -1,0 +1,3 @@
+<%- if @user.flickr_token.blank? -%>
+  <%= link_to 'Authenticate with Flickr', @flickr.auth.url(:write) %>
+<%- end -%>

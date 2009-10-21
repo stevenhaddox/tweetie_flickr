@@ -4,20 +4,39 @@ class UsersController < ApplicationController
   def index
     @users = User.all
   end
+
+  def show
+    @user = User.find(params[:id])
+  end
   
   def new
     @user = User.new
   end
   
+  def edit
+    @user = User.find(params[:id])
+    @flickr = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
+  end
+  
   def create
-    # logger.debug params[:user[:flickr_user_id]]
-    # convert_user_flickrname_to_id
-    # return @user
+    # convert the flickr_username to their flickr_user_id
+    flickr_username = params[:user][:flickr_user_id]
+    flickr_id = convert_user_flickrname_to_id(flickr_username)
+    params[:user][:flickr_user_id] = flickr_id unless flickr_id.blank?
+    @user = User.create(params[:user])
+    respond_to do |format|
+      if @user.valid?
+        @user.save
+        format.html { redirect_to user_path(@user) }
+      else
+        format.html { render :action => "new" }
+      end
+    end
   end
   
 private
-  def convert_user_flickrname_to_id
-    # @user.flickr_user_id = @user.get_flickr_id(params[:user[:flickr_user_id]])
+  def convert_user_flickrname_to_id(flickr_username)
+    User.get_flickr_id(flickr_username)
   end
   
 end

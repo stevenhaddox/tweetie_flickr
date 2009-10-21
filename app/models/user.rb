@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
   end
   memoize :twitter_api
 
-  def get_flickr_id(flickr_username)
-    flickr_api = Flickr.new(FLICKR.merge(:token => flickr_token))
+  def self.get_flickr_id(flickr_username)
+    flickr_api = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
     p = flickr_api.people.find_by_username(flickr_username)
     p.nsid
   end

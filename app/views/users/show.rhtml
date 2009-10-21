@@ -1,0 +1,16 @@
+<div class="user">
+  <div class="twitter">
+    <h1>Twitter:</h1>
+    <h3>Username: <%=h @user.twitter_username %></h3>
+  </div>
+  <div class="flickr">
+    <h1>Flickr</h1>
+    <h3>Flickr ID: <%=h @user.flickr_user_id %><h3>
+    <%- if @user.flickr_token.blank? -%>
+      <p>
+        You are not yet authenticated with Flickr. 
+        Authenticate by <%= link_to 'editing your profile', edit_user_path(@user) %>.
+      </p>
+    <%- end %>
+  </div>
+</div>
