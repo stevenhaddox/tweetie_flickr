@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :authenticate
   skip_before_filter :verify_authenticity_token, :only => [:create]
   
   def index
@@ -7,7 +8,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by_twitter_username(params[:twitter_username])
-#    @user = User.find(params[:id])
+    unless @user.flickr_token
+      redirect_to edit_user_path 
+    end
   end
   
   def new
@@ -16,16 +19,15 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find_by_twitter_username(params[:twitter_username])
-#    @user = User.find(params[:id])
     @flickr = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
   end
-  
-  def create
+
+  def update
     # convert the flickr_username to their flickr_user_id
     flickr_username = params[:user][:flickr_user_id]
     flickr_id = convert_user_flickrname_to_id(flickr_username)
     params[:user][:flickr_user_id] = flickr_id unless flickr_id.blank?
-    @user = User.create(params[:user])
+    @user = User.update_attributes(params[:user])
     respond_to do |format|
       if @user.valid?
         @user.save
