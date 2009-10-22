@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_filter :authenticate, :except => [:index, :show]
   skip_before_filter :verify_authenticity_token, :only => [:create]
-  
+ 
   def index
     @users = User.all
   end
@@ -19,6 +19,10 @@ class UsersController < ApplicationController
   
   def edit
     @user = User.find_by_twitter_username(params[:twitter_username])
+    if edit_self? != true 
+      flash[:error] = "Editing another user's profile is not allowed." 
+      redirect_to users_path
+    end
     @flickr = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
   end
 
@@ -39,6 +43,16 @@ class UsersController < ApplicationController
   end
   
 private
+  def edit_self?
+    if current_user == @user
+      return true
+    else
+      return false
+      flash[:error]="Editing another user's profile is not allowed."
+      redirect_to users_path 
+    end
+  end
+
   def convert_user_flickrname_to_id(flickr_username)
     User.get_flickr_id(flickr_username)
   end
