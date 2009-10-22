@@ -13,15 +13,13 @@
 #
 
 class User < ActiveRecord::Base
-  require 'openssl'
-  require 'base64'
-
   has_many :photos, :dependent => :destroy
-  
-#  def twitter_password=password
-#    self[:twitter_password]=nil
+
+#  def to_param
+#    twitter_username
 #  end
-  
+
+  # TODO: Convert to OAuth    
   def self.twitter_auth(username, password)
     User.find_by_twitter_username_and_twitter_password(username, password)
   end
