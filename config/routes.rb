@@ -3,6 +3,11 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users, :except=>[:show,:edit]
   map.user '/users/:twitter_username.:format', :controller=>:users, :action=>:show
   map.edit_user '/users/:twitter_username/edit', :controller=>:users, :action=>:edit
+
+  map.login '/login', :controller=>:users, :action=>:login
+  map.logout '/logout', :controller=>:users, :action=>:logout
+  map.root :controller=>:photos
+
   
   # The priority is based upon order of creation: first created -> highest priority.
 
