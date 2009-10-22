@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :photos
-  map.resources :users
+  map.resources :users, :except=>[:show,:edit]
+  map.user '/users/:twitter_username.:format', :controller=>:users, :action=>:show
+  map.edit_user '/users/:twitter_username/edit', :controller=>:users, :action=>:edit
   
   # The priority is based upon order of creation: first created -> highest priority.
 

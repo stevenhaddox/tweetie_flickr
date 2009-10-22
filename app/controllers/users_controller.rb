@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find_by_twitter_username(params[:twitter_username])
+#    @user = User.find(params[:id])
   end
   
   def new
@@ -14,7 +15,8 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by_twitter_username(params[:twitter_username])
+#    @user = User.find(params[:id])
     @flickr = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
   end
   

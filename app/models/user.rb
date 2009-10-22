@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
 
   def to_param
-    "#{id}-#{twitter_username}"
+#    "#{id}-#{twitter_username}"
+    twitter_username
   end
 
   # TODO: Convert to OAuth    
