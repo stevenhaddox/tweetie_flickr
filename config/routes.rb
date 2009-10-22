@@ -9,7 +9,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.flickr_callback '/callbacks/flickr', :controller => :users, :action => :flickr_callback
   map.resource :session
-  map.finalize_session 'session/finalize', :controller => 'sessions', :action => 'finalize'  
+  map.finalize_session 'session/finalize', :controller => :sessions, :action => :finalize  
+  map.login '/login', :controller => :sessions, :action => :new
+  map.logout '/logout', :controller => :sessions, :action => :destroy
+
   map.root :controller => :photos
   
 end

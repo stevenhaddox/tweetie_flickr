@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate
+  before_filter :authenticate, :except => [:index, :show]
   skip_before_filter :verify_authenticity_token, :only => [:create]
   
   def index
