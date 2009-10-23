@@ -22,9 +22,10 @@ Check list
 
 Create a user with twitter credentials
 - if User#test_user is true then photos will be private (for testing)
+Create a Twitter Web Client Application
+Enter your API Consumer key and Consumer secret into config/twitter.yml
 
-Get Flickr user ID - try here http://idgettr.com
-You can also use @user.get_flickr_id(flickr_username)
+Create a Flickr account and note your username (in the URL)
 
 Get Flickr API key+secret
 Put these into config/flickr.yml
@@ -32,6 +33,7 @@ Authenticate your Flickr account for write access
 Get your token and store it against the user record
 
 Authorize the application via Twitter's OAuth for user management.
+Authorize the application through Flickr's API for photo uploading.
 
 Set a secret session key for Rails in config/secret
 - use `rake secret` to get a new key
@@ -46,5 +48,6 @@ Tweetie will send
 
 ==========
 TODO:
-[ ] Automate account creation and Flickr authentication
+[ ] Store the tweetie password as a hash to ensure authentication for photos.xml
+[ ] Proper testing on the models and controllers
 [ ] Some real tests with mock webservice calls
