@@ -6,8 +6,13 @@
   <%= f.error_messages %>
   <%- field_set_tag "Flickr" do -%>
     <div id="flickr_id">
+    <%- unless @user.flickr_user_id.include?('@') -%>
       <%= label_tag :flickr_username, "Flickr Username" %>
       <%= f.text_field :flickr_user_id %>
+    <%- else -%>
+      <%= link_to 'Profile', "http://flickr.com/people/#{@user.flickr_user_id}" %>
+      <%= link_to 'Photos', "http://flickr.com/photos/#{@user.flickr_user_id}" %>
+    <%- end -%>
     </div>
   <%- end -%>
   <%- field_set_tag do -%>

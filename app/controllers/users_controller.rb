@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       render :action => :edit and return false
     end
     flickr_username = params[:user][:flickr_user_id]
-    flickr_id = convert_user_flickrname_to_id(flickr_username)
+    flickr_id = convert_user_flickrname_to_id(flickr_username) unless flickr_username.include?('@')
     unless flickr_id && flickr_id.include?('@')
       flash[:error] = "There was an error looking up your ID"
       render :action => :edit and return false
