@@ -1,3 +1,18 @@
 <%- if @user.flickr_token.blank? -%>
   <%= link_to 'Authenticate with Flickr', @flickr.auth.url(:write) %>
 <%- end -%>
+  
+<%- form_for @user, :html => { :multipart => true } do |f| -%>
+  <%= f.error_messages %>
+  <%- field_set_tag "Flickr" do -%>
+    <div id="flickr_id">
+      <%= label_tag :flickr_username, "Flickr Username" %>
+      <%= f.text_field :flickr_user_id %>
+    </div>
+  <%- end -%>
+  <%- field_set_tag do -%>
+    <div class="submit field">
+      <%= f.submit "Update Profile" %>
+    </div>
+  <%- end -%>
+<%- end -%>
