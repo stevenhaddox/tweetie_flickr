@@ -79,7 +79,7 @@ private
   end
   
   def set_flickr
-    if current_user.flickr_token
+    if current_user && current_user.flickr_token
       @flickr = Flickr.new(FLICKR.merge(:token => current_user.flickr_token))
     else
       @flickr = Flickr.new(FLICKR)
