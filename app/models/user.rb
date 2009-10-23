@@ -7,6 +7,7 @@
 #  twitter_password :string(255)
 #  twitter_rtoken   :string(255)
 #  twitter_rsecret  :string(255)
+#  photo_hash       :string(255)
 #  flickr_user_id   :string(255)
 #  flickr_token     :string(255)
 #  test_user        :boolean
@@ -14,6 +15,7 @@
 #  updated_at       :datetime
 #
 
+require 'uuid'
 class User < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
 
@@ -42,4 +44,17 @@ class User < ActiveRecord::Base
     p.nsid
   end
   
+  def photo_hash=(oauth_verification_str=nil)
+    return unless read_attribute(:photo_hash).blank? or oauth_verification_str.blank?
+    if oauth_verification_str.blank?
+      write_attribute(:photo_hash, nil)
+      return
+    end
+    oauth_uuid_string = "#{oauth_verification_str}+#{UUID.new}".hash.abs
+    write_attribute(:photo_hash, oauth_uuid_string)
+  end 
+   
+  def get_endpoint_path
+    "/clients/tweetie/#{photo_hash}.xml" 
+  end  
 end

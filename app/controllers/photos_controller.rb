@@ -11,7 +11,19 @@ class PhotosController < ApplicationController
   
   # POST /photos.xml
   def create
-    if @user = User.find_by_twitter_username(params[:username])
+    # verify we have a valid authenticated user by current_user session OR username and photo_hash
+    unless current_user
+      unless params[:username] && params[:photo_hash] 
+        redirect_to '/403.html' and return false
+      end
+      @user = User.find_by_twitter_username_and_photo_hash(params[:username],params[:photo_hash])
+    else
+      @user = current_user
+      @user = nil if params[:format] && params[:format]=='xml'
+    end
+    redirect_to '/403.html' and return false unless @user
+
+    if @user
       return unless @user.flickr_token
 
       @photo = @user.photos.new(params[:photo])
