@@ -48,6 +48,6 @@ Tweetie will send
 
 ==========
 TODO:
-[ ] Store the tweetie password as a hash to ensure authentication for photos.xml
+[ ] Authenticate against Twitter with HTTP basic over SSL (then ignore user's twitter password)
 [ ] Proper testing on the models and controllers
 [ ] Some real tests with mock webservice calls
