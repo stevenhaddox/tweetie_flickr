@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
     
     user.update_attributes({
       :twitter_rtoken => oauth.access_token.token, 
-      :twitter_rsecret => oauth.access_token.secret,
+      :twitter_rsecret => oauth.access_token.secret
     })
     
     sign_in(user)
@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
     if current_user.flickr_token && current_user.flickr_user_id
       redirect_back_or root_path
     else
-      redirect_to user_path(user)
+      redirect_to edit_user_path(user)
     end
   end
   

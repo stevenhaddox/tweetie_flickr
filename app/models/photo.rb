@@ -39,9 +39,10 @@ class Photo < ActiveRecord::Base
   
   def fetch_tweet
     if twitter_status_id.blank? && user
-      timeline = user.twitter_api.user_timeline
+      # timeline = user.twitter_api.user_timeline
+      search = Twitter::Search.new.from(user.twitter_username)
       # scan each tweet and match the short URL
-      timeline.each do |tweet|
+      search.each do |tweet|
         if tweet.text.match(short_url)
           self.twitter_status_id = tweet.id
           self.caption = tweet.text

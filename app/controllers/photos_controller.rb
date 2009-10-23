@@ -11,8 +11,9 @@ class PhotosController < ApplicationController
   
   # POST /photos.xml
   def create
-    if @user = User.twitter_auth(params[:username], params[:password])
-      
+    if @user = User.find_by_twitter_username(params[:username])
+      return unless @user.flickr_token
+
       @photo = @user.photos.new(params[:photo])
       @photo.image = params[:media] if params[:media]
       
