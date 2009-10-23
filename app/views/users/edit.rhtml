@@ -6,7 +6,7 @@
   <%= f.error_messages %>
   <%- field_set_tag "Flickr" do -%>
     <div id="flickr_id">
-    <%- unless @user.flickr_user_id.include?('@') -%>
+    <%- if @user.flickr_user_id.blank? -%>
       <%= label_tag :flickr_username, "Flickr Username" %>
       <%= f.text_field :flickr_user_id %>
     <%- else -%>
