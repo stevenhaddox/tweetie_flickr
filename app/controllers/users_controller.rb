@@ -24,19 +24,19 @@ class UsersController < ApplicationController
   end
 
   def update
-    # convert the flickr_username to their flickr_user_id
-    unless params[:user][:flickr_user_id]
-      flash[:error] = 'You must provide your Flickr screenname to lokup your ID'
-      render :action => :edit and return false
+    # convert the flickr_username to their flickr_user_id 
+    if params[:user]
+      if params[:user][:flickr_user_id]
+        flickr_username = params[:user][:flickr_user_id]
+        flickr_id = convert_user_flickrname_to_id(flickr_username) unless flickr_username.include?('@')
+        unless flickr_id
+          flash[:error] = "There was an error looking up your ID"
+          render :action => :edit and return false
+        end
+        params[:user][:flickr_user_id] = flickr_id
+      end
+      @user.update_attributes(params[:user])
     end
-    flickr_username = params[:user][:flickr_user_id]
-    flickr_id = convert_user_flickrname_to_id(flickr_username) unless flickr_username.include?('@')
-    unless flickr_id && flickr_id.include?('@')
-      flash[:error] = "There was an error looking up your ID"
-      render :action => :edit and return false
-    end
-    params[:user][:flickr_user_id] = flickr_id
-    @user.update_attributes(params[:user])
     unless @user.flickr_token
       redirect_to @flickr.auth.url(:write) and return
     else      
