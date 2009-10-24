@@ -21,6 +21,8 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
   config.gem "commonthread-flickr_fu", :lib => "flickr_fu", :source => "http://gems.github.com"
   config.gem "jnunemaker-twitter", :lib => "twitter", :source => "http://gems.github.com"
+  config.gem "formtastic", :source => "http://gemcutter.org"
+  config.gem "uuid"
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named

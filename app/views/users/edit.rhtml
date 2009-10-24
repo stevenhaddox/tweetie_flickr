@@ -1,19 +1,18 @@
-<%- form_for @user, :html => { :multipart => true } do |f| -%>
-  <%= f.error_messages %>
-  <%- field_set_tag "Flickr" do -%>
-    <div id="flickr_id">
-    <%- if @user.flickr_user_id.blank? -%>
-      <%= label_tag :flickr_username, "Flickr Username" %>
-      <%= f.text_field :flickr_user_id %>
-    <%- else -%>
-      <%= link_to 'Profile', "http://flickr.com/people/#{@user.flickr_user_id}" %>
-      <%= link_to 'Photos', "http://flickr.com/photos/#{@user.flickr_user_id}" %>
-    <%- end -%>
-    </div>
+<%- semantic_form_for @user do |form| -%>
+  <%= form.error_messages %>
+  <%#= form.inputs %>
+  <%- form.inputs :name => "Flickr", :id => "flickr" do -%>
+    <%= form.input :flickr_username %>
   <%- end -%>
-  <%- field_set_tag do -%>
-    <div class="submit field">
-      <%= f.submit "Update Profile" %>
-    </div>
+  <%- form.inputs :name => "Client", :id => "client" do -%>
+    <p>
+    <strong>NOTE:</strong> Changing this value will also require you to update your client's endpoint URL.<br />
+    Creating a "Custom" Client Hash will allow you to link multiple Twitter accounts with the same end-point URL.<br />
+    Just enter the same string for each of your Flickr4Twitter accounts.
+    </p>
+    <p>Your current endpoint URL for your client is:<br /><%= "#{root_url}#{@user.get_endpoint_path}" %></p>
+    <%= form.input :custom_client_hash, :required => false %>
   <%- end -%>
+  
+  <%= form.buttons %>
 <%- end -%>

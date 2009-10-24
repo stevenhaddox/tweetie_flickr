@@ -1,16 +1,29 @@
 <div class="user">
+  <%- if current_user == @user -%>
+  <div class="private">
+    <p>
+      Your Tweetie Custom Endpoint URL is: <br />
+      <%= root_url + current_user.get_endpoint_path %>
+    </p>
+    <p>
+      <%= link_to 'Edit Your Profile', edit_user_path(current_user) %>
+    </p>
+  </div>
+  <%- end -%>
+  
   <div class="twitter">
-    <h1>Twitter:</h1>
-    <h3>Username: <%=h @user.twitter_username %></h3>
+    <h1>Twitter Username: <%= link_to @user.twitter_username, "http://twitter.com/#{@user.twitter_username}" %></h1>
   </div>
   <div class="flickr">
-    <h1>Flickr</h1>
-    <h3>Flickr ID: <%=h @user.flickr_user_id %><h3>
-    <%- if @user.flickr_token.blank? -%>
-      <p>
-        You are not yet authenticated with Flickr. 
-        Authenticate by <%= link_to 'editing your profile', edit_user_path(@user) %>.
-      </p>
-    <%- end %>
+    <h2>Flickr Username: <%=h @user.flickr_username %></h2>
+    <p>
+      <ul>
+        <li>Flickr Photos: <%= link_to 'Photos', "http://flickr.com/photos/#{@user.flickr_user_id}" %></li>
+        <li>Flickr Profile: <%= link_to 'Profile', "http://flickr.com/people/#{@user.flickr_user_id}" %></li>
+      </ul>
+    </p>
+    <div class="flickr_photos">
+      <h2>Recent Photos</h2>
+    </div>
   </div>
 </div>

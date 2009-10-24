@@ -30,7 +30,7 @@ class SessionsController < ApplicationController
       :twitter_rsecret => oauth.access_token.secret
     })
 
-    user.update_attribute(:photo_hash, params[:oauth_verifier].hash) if user.photo_hash.nil?
+    user.update_attribute(:client_hash, params[:oauth_verifier].hash) if user.client_hash.nil?
     
     sign_in(user)
 

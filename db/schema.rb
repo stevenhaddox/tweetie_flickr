@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091023194110) do
+ActiveRecord::Schema.define(:version => 20091024050212) do
 
   create_table "photos", :force => true do |t|
     t.string   "flickr_id"
@@ -36,20 +36,22 @@ ActiveRecord::Schema.define(:version => 20091023194110) do
 
   create_table "users", :force => true do |t|
     t.string   "twitter_username"
-    t.string   "twitter_password"
     t.string   "flickr_user_id"
     t.string   "flickr_token"
-    t.boolean  "test_user",        :default => false
+    t.boolean  "test_user",          :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "twitter_pin"
     t.string   "twitter_rtoken"
     t.string   "twitter_rsecret"
-    t.string   "photo_hash"
+    t.string   "client_hash"
+    t.string   "custom_client_hash"
+    t.string   "flickr_username"
   end
 
+  add_index "users", ["client_hash"], :name => "index_users_on_client_hash"
+  add_index "users", ["custom_client_hash"], :name => "index_users_on_custom_client_hash"
   add_index "users", ["flickr_user_id"], :name => "index_users_on_flickr_user_id"
-  add_index "users", ["twitter_password"], :name => "index_users_on_twitter_password"
   add_index "users", ["twitter_username"], :name => "index_users_on_twitter_username", :unique => true
 
 end

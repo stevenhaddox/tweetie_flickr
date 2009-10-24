@@ -26,14 +26,13 @@ class UsersController < ApplicationController
   def update
     # convert the flickr_username to their flickr_user_id 
     if params[:user]
-      if params[:user][:flickr_user_id]
-        flickr_username = params[:user][:flickr_user_id]
-        flickr_id = convert_user_flickrname_to_id(flickr_username) unless flickr_username.include?('@')
-        unless flickr_id
-          flash[:error] = "There was an error looking up your ID"
-          render :action => :edit and return false
+      if params[:user][:flickr_username]
+        new_flickr_id = check_flickr_user_id(params[:user][:flickr_username])
+        if new_flickr_id.blank?
+          params[:user].delete(:flickr_username)
+        else
+          params[:user][:flickr_user_id] = new_flickr_id
         end
-        params[:user][:flickr_user_id] = flickr_id
       end
       @user.update_attributes(params[:user])
     end
@@ -93,8 +92,17 @@ private
     end
   end
 
-  def convert_user_flickrname_to_id(flickr_username)
-    User.get_flickr_id(flickr_username)
+  def check_flickr_user_id(flickr_username)
+    # no need to update the flickr_user_id if it is the same
+    if @user.flickr_username == flickr_username
+      return nil
+    end
+    flickr_id = User.get_flickr_id(flickr_username)
+    unless flickr_id
+      flash[:error] = "There was an error looking up your ID"
+      render :action => :edit and return nil
+    end
+    flickr_id
   end
   
 end

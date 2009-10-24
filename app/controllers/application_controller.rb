@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery # See ActionController::RequestForgeryProtection for details
 
   # Scrub sensitive parameters from your log
-  filter_parameter_logging :password, :twitter_password
+  filter_parameter_logging :password
 
   rescue_from Twitter::Unauthorized, :with => :force_sign_in
   

@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => :sessions, :action => :new
   map.logout '/logout', :controller => :sessions, :action => :destroy
 
-  map.tweetie_endpoint '/clients/:client/:photo_hash.:format', :controller => :photos, :action => :create
+  map.tweetie_endpoint '/clients/:client/:client_hash.:format', :controller => :photos, :action => :create
 
   map.root :controller => :photos
   

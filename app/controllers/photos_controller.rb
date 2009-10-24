@@ -11,12 +11,14 @@ class PhotosController < ApplicationController
   
   # POST /photos.xml
   def create
-    # verify we have a valid authenticated user by current_user session OR username and photo_hash
+    # verify we have a valid authenticated user by current_user session 
+    # OR lookup username by custom_client_hash (multiple tweetie accounts) or client_hash
     unless current_user
-      unless params[:username] && params[:photo_hash] 
+      unless params[:username] && params[:client_hash] 
         redirect_to '/403.html' and return false
       end
-      @user = User.find_by_twitter_username_and_photo_hash(params[:username],params[:photo_hash])
+      @user = User.find_by_twitter_username_and_custom_client_hash(params[:username],params[:client_hash])
+      @user ||= User.find_by_twitter_username_and_client_hash(params[:username],params[:client_hash])
     else
       @user = current_user
       @user = nil if params[:format] && params[:format]=='xml'
