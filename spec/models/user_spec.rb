@@ -4,7 +4,6 @@
 #
 #  id               :integer         not null, primary key
 #  twitter_username :string(255)
-#  twitter_password :string(255)
 #  flickr_user_id   :string(255)
 #  flickr_token     :string(255)
 #  test_user        :boolean
@@ -18,7 +17,6 @@ describe User do
   before(:each) do
     @valid_attributes = {
       :twitter_username => "value for username",
-      :twitter_password => "value for password",
       :flickr_token => "value for token"
     }
   end

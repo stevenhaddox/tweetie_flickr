@@ -1,5 +1,3 @@
-<p><%= link_to "New photo", new_photo_path %></p>
-
 <%- unless @photos.blank? -%>
   <%- for photo in @photos -%>
     <% div_for photo do %>

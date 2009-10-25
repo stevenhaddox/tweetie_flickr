@@ -1,0 +1,13 @@
+<ul id="menu">
+<!--
+  <li class='<%= 'active' if request.request_uri == "/" %>'>
+    <%= link_to 'Home', root_url %>
+  </li>
+-->
+  <li class='<%= 'active' if controller.action_name == "photos" %>'>
+    <%= link_to 'Photos', photos_url %>
+  </li>
+  <li class='<%= 'active' if controller.controller_name == "users" %>'>
+    <%= link_to "Users", users_url %>
+  </li>
+</ul>

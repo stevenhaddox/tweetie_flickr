@@ -1,0 +1,11 @@
+<%- if signed_in? -%>
+<ul id="user_menu">
+  <li class='<%= 'active' if request.request_uri == "/photos/new" %>'>
+    <%= link_to 'Upload Photo', new_photo_url %>
+  </li>
+  <li class='<%= 'active' if request.request_uri == "/users/#{current_user.twitter_username}" %>'>
+    <%= link_to 'Edit Profile', edit_user_url(current_user) %>
+  </li>
+  <li><%= link_to 'Logout', session_url, :method => :delete %></li>
+</ul>
+<%- end -%>

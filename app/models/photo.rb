@@ -19,7 +19,7 @@ class Photo < ActiveRecord::Base
   after_save :upload_to_flickr
   after_save :update_flickr_description
   
-  attr_accessor :image
+  attr_accessor :image, :message
   
   def flickr_api
     @flickr_api ||= Flickr.new(FLICKR.merge(:token => user.flickr_token))
