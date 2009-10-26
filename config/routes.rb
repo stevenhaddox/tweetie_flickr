@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.root :controller => :photos
-
+  
   map.resources :photos
-
   map.resources :users, :except => [:show,:edit]
   map.user '/users/:twitter_username.:format', :controller => :users, :action => :show
   map.edit_user '/users/:twitter_username/edit', :controller => :users, :action => :edit
@@ -15,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.client_endpoint '/clients/:client/:client_hash.:format', :controller => :photos, :action => :create
 
-  map.root :controller => :photos
+  map.root :controller => :pages
+  map.page ':page', :controller => :pages, :action => 'show', :page => PagesController::PAGES 
   
 end

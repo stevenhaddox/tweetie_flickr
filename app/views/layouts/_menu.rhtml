@@ -1,9 +1,7 @@
 <ul id="menu">
-<!--
   <li class='<%= 'active' if request.request_uri == "/" %>'>
-    <%= link_to 'Home', root_url %>
+    <%= link_to 'Home', page_url %>
   </li>
--->
   <li class='<%= 'active' if controller.action_name == "photos" %>'>
     <%= link_to 'Photos', photos_url %>
   </li>

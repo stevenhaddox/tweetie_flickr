@@ -1,0 +1,12 @@
+<h1>Flickr4Twitter.com</h1>
+
+<%- unless current_user -%>
+  <h3>Not a member yet?</h3>
+  <div id="join_link">
+    <p><%= link_to 'Join', page_url('join') %></p>
+  </div>
+  <h3>Already a member?</h3>
+  <%- form_tag session_path do -%>
+    <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
+  <%- end -%>
+<%- end -%>
