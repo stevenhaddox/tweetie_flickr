@@ -17,7 +17,13 @@
       <strong>NOTE:</strong> Creating / deleting this field will require you to change the custom endpoint in Tweetie.
       </p>
     </li>
-    <%= form.input :custom_client_hash, :required => false %>
+    <%- if @user.custom_client_hash -%>
+      <li><p><strong>You already have a custom endpoint, modifying this field will overwrite your current custom endpoint.</p></li>
+      <%= form.input :reset_custom_client_hash, :as => :boolean, :required => false %>
+      <%= form.input :new_custom_client_hash, :as => :string, :required => false, :input_html => { :value => nil } %>
+    <%- else -%>
+      <%= form.input :custom_client_hash, :required => false %>
+    <%- end -%>
   <%- end -%>  
 
   <%- form.buttons do -%>

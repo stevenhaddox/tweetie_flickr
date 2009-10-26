@@ -20,6 +20,8 @@ require 'uuid'
 class User < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
 
+  attr_accessor :new_custom_client_hash, :reset_custom_client_hash
+
   def to_param
     twitter_username
   end
@@ -39,12 +41,24 @@ class User < ActiveRecord::Base
   # = Instance methods =
   # ====================
 
-  # return public Twitter API object
-  def twitter_api
-    oauth = Twitter::OAuth.new(TWITTER['token'], TWITTER['secret'])
-    Twitter::Base.new(oauth)
+  def authorized?
+    twiter_rtoken.present? && twitter_rsecret.present?
   end
-  memoize :twitter_api
+  
+  def oauth
+    @oauth ||= Twitter::OAuth.new(TWITTER['token'], TWITTER['secret'])
+  end
+  
+  delegate :request_token, :access_token, :authorize_from_request, :to => :oauth
+  
+  def client
+    @client ||= begin
+      oauth.authorize_from_access(twitter_rtoken, twitter_rsecret)
+      Twitter::Base.new(oauth)
+    end
+  end
+
+
 
   def custom_client_hash=(custom_client_hash_str=nil)
     if custom_client_hash_str.blank?

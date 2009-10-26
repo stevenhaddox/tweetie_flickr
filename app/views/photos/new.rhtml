@@ -2,7 +2,8 @@
   <%= form.error_messages %>
   <%- form.inputs :name => 'Upload Photo', :id => 'upload_photo' do -%>
     <%= form.input :image, :as => :file, :label => 'Image', :required => true %>
-    <%= form.input :message, :as => :text, :label => 'Tweet', :required => false %>
+    <%= form.input :message, :as => :text, :label => 'Tweet', :required => false, 
+                   :input_html => { :class => 'tweet', :rows => 3, :cols => 35, :maxlength => 125 } %>
     <%= form.commit_button :button_html => { :value => 'Save' } %>
   <%- end -%>
 <%- end -%>

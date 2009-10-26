@@ -1,0 +1,29 @@
+/* ================ */
+/* = Form Styling = */
+/* ================ */
+
+form.formtastic fieldset ol li.text textarea.tweet {
+	height: 60px;
+	width: 290px;
+}
+
+form ol li, form ul li {
+	list-style-type: none;
+}
+
+form label { 
+	vertical-align: left;
+	margin-right: 20px;
+}
+
+form.formtastic fieldset.buttons { padding-left: 0; }
+form.formtastic fieldset ol li.string input { width: auto; }
+form.formtastic fieldset ol li.boolean label { padding-left: 0; }
+form.formtastic fieldset ol li.text textarea.tweet { float: left; }
+
+div.counter {
+	float: left;
+  margin-left: 15px;
+	font-size: 1.2em;
+	font-weight: bold;
+}

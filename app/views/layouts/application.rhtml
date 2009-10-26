@@ -7,16 +7,19 @@
 
 	<title><%= yield(:title) || 'Flickr4Twitter' %></title>
 
-	<%= stylesheet_link_tag "blueprint/screen.css", "application.css", :media => 'screen, projection' %>
-	<%= stylesheet_link_tag "blueprint/print.css", :media => 'print' %>
+	<%= stylesheet_link_tag 'blueprint/screen.css', 'formtastic.css', :media => 'screen, projection' %>
+	<%= stylesheet_link_tag 'application.css', :media => 'screen, projection' %>
+	<%= stylesheet_link_tag 'blueprint/print.css', :media => 'print' %>
   <%- if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <!--[if lt IE 8]>
-      <%= stylesheet_link_tag "blueprint/ie.css", :media => 'screen,projection' %>
+      <%= stylesheet_link_tag 'blueprint/ie.css', :media => 'screen,projection' %>
     <![endif]-->
   <%- end -%>
 
-  <%= javascript_include_tag "jquery-1.3.2.min.js" %>
-  <%#= javascript_include_tag "jquery.untinyurl.js" %>
+  <%= javascript_include_tag 'jquery-1.3.2.min.js' %>
+  <%= javascript_include_tag 'jquery.maxlength.js' %>
+  <%= javascript_include_tag 'application.js' %>
+  <%#= javascript_include_tag 'jquery.untinyurl.js' %>
 </head>
 
 <body>

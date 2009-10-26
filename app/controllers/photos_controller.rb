@@ -17,8 +17,8 @@ class PhotosController < ApplicationController
       unless params[:username] && params[:client_hash] 
         redirect_to '/403.html' and return false
       end
-      @user = User.find_by_twitter_username_and_custom_client_hash(params[:username],params[:client_hash])
-      @user ||= User.find_by_twitter_username_and_client_hash(params[:username],params[:client_hash])
+      # @user = User.find_by_twitter_username_and_custom_client_hash(params[:username],params[:client_hash])
+      @user = User.find_by_twitter_username_and_client_hash(params[:username],params[:client_hash])
     else
       @user = current_user
       @user = nil if params[:format] && params[:format]=='xml'
@@ -33,7 +33,12 @@ class PhotosController < ApplicationController
       
       respond_to do |format|
         if @photo.save
-          
+          if current_user && params[:photo]
+            message = params[:photo][:message]
+            message += " #{@photo.short_url}"
+            tweet = current_user.client.update(message) if @photo.short_url
+            flash[:notice] = "Your tweet has been posted successfully"
+          end
           # Fork and wait about some time to fetch the tweets -
           # This obviously would have been better to use a
           # background job but that would have cost money :)
@@ -50,8 +55,8 @@ class PhotosController < ApplicationController
             Process.detach(pid)
             Photo.connection.reconnect!
           end
-          
-          flash[:notice] = "Photo saved."
+
+          flash[:notice] ||= "Photo uploaded to Flickr"
           format.html { redirect_to(photos_url) }
           format.xml  { render :xml => @photo, :status => :created, :location => @photo }
         else
