@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   include Twitter::AuthenticationHelpers
   before_filter :check_flickr_auth
+  include SslRequirement
 
   helper :all # include all helpers, all the time
   protect_from_forgery # See ActionController::RequestForgeryProtection for details

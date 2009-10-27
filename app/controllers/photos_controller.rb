@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
+  ssl_required :create unless Rails.env.development?
   
   def index
     @photos = Photo.all
