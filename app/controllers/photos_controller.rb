@@ -23,8 +23,6 @@ class PhotosController < ApplicationController
       @user = current_user
       @user = nil if params[:format] && params[:format]=='xml'
     end
-    logger.debug @user
-    logger.debug params
     redirect_to '/403.html' and return false unless @user
 
     if @user
