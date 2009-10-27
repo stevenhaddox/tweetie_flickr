@@ -18,11 +18,13 @@ class PhotosController < ApplicationController
         redirect_to '/403.html' and return false
       end
       @user = User.find_by_twitter_username_and_custom_client_hash(params[:username],params[:client_hash])
-      @user = User.find_by_twitter_username_and_client_hash(params[:username],params[:client_hash])
+      @user ||= User.find_by_twitter_username_and_client_hash(params[:username],params[:client_hash])
     else
       @user = current_user
       @user = nil if params[:format] && params[:format]=='xml'
     end
+    logger.debug @user
+    logger.debug params
     redirect_to '/403.html' and return false unless @user
 
     if @user
