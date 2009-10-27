@@ -81,7 +81,7 @@ class Photo < ActiveRecord::Base
     if image && !uploaded?
       rsp = flickr_api.uploader.upload(image.path, 
               :title => Time.now.utc.strftime("%e %b %Y"), 
-              :tags => "iphone", 
+              :tags => "iphone,flickr4twitter", 
               :is_public => !user.test_user?
             )
       self.flickr_id = rsp.photoid.to_s
