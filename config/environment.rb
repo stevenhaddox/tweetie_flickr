@@ -23,6 +23,7 @@ Rails::Initializer.run do |config|
   config.gem 'jnunemaker-twitter', :lib => 'twitter', :source => 'http://gems.github.com'
   config.gem 'formtastic', :source => 'http://gemcutter.org'
   config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
+  config.gem 'less'
   config.gem 'uuid'
   
   # Only load the plugins named here, in the order given (default is alphabetical).

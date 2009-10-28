@@ -6,4 +6,4 @@ config/database.yml
 config/flickr.yml
 config/twitter.yml
 secret
-
+public/stylesheets
