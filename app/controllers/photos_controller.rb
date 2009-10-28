@@ -3,7 +3,12 @@ class PhotosController < ApplicationController
   ssl_required :new, :create unless Rails.env.development?
   
   def index
-    @photos = Photo.all
+    @photos = Photo.paginate :page => params[:page], :order => 'created_at DESC'
+  end
+
+  def show
+    @photo = Photo.find(params[:id])
+    @recent_photos = Photo.find(:all, :conditions=>{:user_id=>@photo.user_id, :limit=>4, :order=>'created_at DESC'})
   end
   
   def new

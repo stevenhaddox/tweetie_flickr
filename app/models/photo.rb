@@ -20,6 +20,9 @@ class Photo < ActiveRecord::Base
   after_save :update_flickr_description
   
   attr_accessor :image, :message
+
+  cattr_reader :per_page
+  @@per_page = 5
   
   def flickr_api
     @flickr_api ||= Flickr.new(FLICKR.merge(:token => user.flickr_token))

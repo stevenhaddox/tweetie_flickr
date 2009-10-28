@@ -8,6 +8,7 @@
       <p><em>Caption:</em> <%=h photo.caption %></p>
     <% end -%>
   <%- end -%>
+  <%= will_paginate @photos %>
 <%- else -%>
   <p>There are currently no photos to display.</p>
 <%- end -%>
