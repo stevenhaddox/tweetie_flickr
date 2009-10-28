@@ -1,10 +1,13 @@
 <%- unless @photos.blank? -%>
   <%- for photo in @photos -%>
     <% div_for photo do %>
+      <%- if photo.flickr_image -%>
+    	  <p><%= link_to image_tag(photo.flickr_image.url('thumb'), :alt => photo.flickr_image.url), photo.flickr_image.url('thumb') %></p>
+    	<%- end -%> 
       <p><em>Short URL:</em> <%= link_to photo.short_url, photo.short_url %></p>
       <p><em>Caption:</em> <%=h photo.caption %></p>
     <% end -%>
   <%- end -%>
 <%- else -%>
-  <p>None</p>
+  <p>There are currently no photos to display.</p>
 <%- end -%>

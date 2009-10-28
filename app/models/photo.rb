@@ -63,7 +63,7 @@ class Photo < ActiveRecord::Base
   def flickr_image
     @flickr_image ||= flickr_api.photos.find_by_id(flickr_id) rescue nil
   end
-  
+
   def to_xml(*args)
     output = ""
     x = Builder::XmlMarkup.new(:target => output)
