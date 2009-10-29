@@ -4,6 +4,6 @@
     <%= form.input :image, :as => :file, :label => 'Image', :required => true %>
     <%= form.input :message, :as => :text, :label => 'Tweet', :required => false, 
                    :input_html => { :class => 'tweet', :rows => 3, :cols => 35, :maxlength => 125 } %>
-    <%= form.commit_button :button_html => { :value => 'Save' } %>
+    <%= form.commit_button :button_html => { :value => 'Post Tweet' } %>
   <%- end -%>
 <%- end -%>
