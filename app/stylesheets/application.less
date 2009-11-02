@@ -1,3 +1,9 @@
+/* =================== */
+/* = Color Constants = */
+/* =================== */
+@blue: #1EC2FF;
+@pink: #FF1473;
+
 /* ================ */
 /* = Form Styling = */
 /* ================ */
@@ -16,16 +22,19 @@ form label {
 	margin-right: 20px;
 }
 
+form .required { color: @pink; }
+
+
 form.formtastic fieldset.buttons { padding-left: 0; }
 form.formtastic fieldset ol li.string input { width: auto; }
 form.formtastic fieldset ol li.boolean label { padding-left: 0; }
 form.formtastic fieldset ol li.text textarea.tweet { float: left; }
 
 div.counter {
-	float: left;
+  float: left;
   margin-left: 15px;
-	font-size: 1.2em;
-	font-weight: bold;
+  font-size: 1.2em;
+  font-weight: bold;
 }
 
 /* ============== */
@@ -40,7 +49,8 @@ div.counter {
 #pagination a:hover, #pagination a:focus { 
   border-color: #003366; 
   background: #5A6D80; 
-  color: white; }
+  color: white; 
+}
 #pagination .page_info { color: #aaa; padding-top: .8em; }
 #pagination .prev_page, #pagination .next_page { border-width: 2px; }
 #pagination .prev_page { margin-right: 1em; }

@@ -3,6 +3,8 @@ log/*.log
 db/*.sqlite3
 .DS_Store
 config/database.yml
+config/deploy.rb
+config/deploy
 config/flickr.yml
 config/twitter.yml
 secret
