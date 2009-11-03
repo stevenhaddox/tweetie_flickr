@@ -1,5 +1,5 @@
 <div class="flash info">
-  <p>Your current endpoint URL for your client is:<br /><%= "#{root_url}#{@user.get_endpoint_path}" %></p>
+  <p>Your current endpoint URL for your client is:<br /><%= "#{@user.get_endpoint_path}" %></p>
 </div>
 
 <%- semantic_form_for @user do |form| -%>

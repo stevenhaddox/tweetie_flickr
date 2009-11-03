@@ -3,7 +3,7 @@
   <div class="private">
     <p>
       Your Tweetie Custom Endpoint URL is: <br />
-      <%= root_url + current_user.get_endpoint_path %>
+      <%= current_user.get_endpoint_path %>
     </p>
     <p>
       <%= link_to 'Edit Your Profile', edit_user_path(current_user) %>
