@@ -81,6 +81,6 @@ class User < ActiveRecord::Base
    
   def get_endpoint_path
     url_client_hash = custom_client_hash.blank? ? client_hash : custom_client_hash
-    "clients/tweetie/#{url_client_hash}.xml" 
+    "https://flickr4twitter.com/clients/tweetie/#{url_client_hash}.xml" 
   end  
 end

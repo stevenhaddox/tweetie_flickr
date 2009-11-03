@@ -16,5 +16,9 @@
       </ol>
     </li>
   </ol>
-  <h2>Ready to join? We'll walk you through it, just start here <%- form_tag session_path do -%><%= image_submit_tag 'twitter_sign_in.png' %><%- end -%></h2>
+  <h2>Ready to join?</h2>
+  <p>We'll walk you through it, just start here:</p>
+  <%- form_tag session_path do -%>
+    <%= image_submit_tag 'twitter_sign_in.png' %>
+  <%- end -%>
 </div>
