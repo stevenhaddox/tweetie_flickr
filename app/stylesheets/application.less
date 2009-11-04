@@ -1,8 +1,37 @@
 /* =================== */
 /* = Color Constants = */
 /* =================== */
-@blue: #1EC2FF;
+@blue: #0D3A63;
 @pink: #FF1473;
+@pink_dark: #D91161;
+@blue_dark: #1766B0;
+@blue_light: #1EC2FF;
+@header_color: #25AEF5; /* 1589B3 */
+@background_color: #FFF;
+
+/* ========== */
+/* = Layout = */
+/* ========== */
+#header { margin: 0 0 2em; border-bottom: 1px solid @pink_dark; padding: 0; height: 150px; }
+
+
+/* ================== */
+/* = General styles = */
+/* ================== */
+#header { background-color: @header_color; }
+a:link, a:visited { color: @pink_dark; }
+a:hover { color: @blue_dark; }
+
+
+/* ========= */
+/* = Menus = */
+/* ========= */
+ul#menu { list-style-type: none; margin: 0; padding: 0; }
+ul#menu li { float: left; width: auto; margin: 0 15px; }
+
+ul#user_menu { list-style-type: none; padding: 0; }
+ul#user_menu li { width: auto; display: block; margin: 0 5px .5em; }
+
 
 /* ================ */
 /* = Form Styling = */
@@ -24,6 +53,16 @@ form label {
 
 form .required { color: @pink; }
 
+form fieldset, form.formtastic fieldset { 
+  margin: 0 0 1em 0;
+  border: 1px dashed @pink;
+  padding: 10px;
+}
+form fieldset legend, form.formtastic fieldset legend { 
+  color: @blue;
+  padding: 2px 5px 2px 4px;
+  border: 1px solid @pink;
+}
 
 form.formtastic fieldset.buttons { padding-left: 0; }
 form.formtastic fieldset ol li.string input { width: auto; }

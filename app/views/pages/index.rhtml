@@ -1,17 +1,18 @@
-<h1>Flickr4Twitter.com</h1>
+<div id="home_page">
 
-<div class="notice">
-  Flickr4Twitter.com is in very early ALPHA stages and does not yet have much of a user interface.<br />
-  If you have any problems please send us a DM / mention on Twitter <a href="http://twitter.com/flickr4tw1tter">@flickr4tw1tter</a>
-</div>
-
-<%- unless current_user -%>
-  <h3>Not a member yet?</h3>
-  <div id="join_link">
-    <p><%= link_to 'Join', page_url('join') %></p>
+  <div class="notice">
+    Flickr4Twitter.com is in very early ALPHA stages and does not yet have much of a user interface.<br />
+    If you have any problems please send us a DM / mention on Twitter <a href="http://twitter.com/flickr4tw1tter">@flickr4tw1tter</a>
   </div>
-  <h3>Already a member?</h3>
-  <%- form_tag session_path do -%>
-    <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
+
+  <%- unless current_user -%>
+    <h3>Not a member yet?</h3>
+    <div id="join_link">
+      <p><%= link_to 'Join', page_url('join') %></p>
+    </div>
+    <h3>Already a member?</h3>
+    <%- form_tag session_path do -%>
+      <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
+    <%- end -%>
   <%- end -%>
-<%- end -%>
+</div>

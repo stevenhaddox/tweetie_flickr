@@ -7,5 +7,6 @@ config/deploy.rb
 config/deploy
 config/flickr.yml
 config/twitter.yml
+config/initializers/hoptoad.rb
 secret
 public/stylesheets

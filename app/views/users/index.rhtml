@@ -1,9 +1,11 @@
-<%- if !@users.blank? -%>
-  <%- for user in @users -%>
-    <% div_for user do %>
-      <p><%= link_to user.twitter_username, user_path(user) %></p>
-    <% end -%>
+<div id="users">
+  <%- if !@users.blank? -%>
+    <%- for user in @users -%>
+      <% div_for user do %>
+        <p><%= link_to user.twitter_username, user_path(user) %></p>
+      <% end -%>
+    <%- end -%>
+  <%- else -%>
+    <p>There are no registered users at this time.</p>
   <%- end -%>
-<%- else -%>
-  <p>None</p>
-<%- end -%>
+</div>

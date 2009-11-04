@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
   end
   
   def new
-    @photo = Photo.new
+    @photo ||= Photo.new # application_controller may already define this
   end
   
   # POST /photos.xml

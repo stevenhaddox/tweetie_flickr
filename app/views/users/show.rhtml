@@ -1,10 +1,9 @@
-<div class="user">
+<div id="user_show" class="user">
   <%- if current_user == @user -%>
   <div class="private">
-    <p>
-      Your Tweetie Custom Endpoint URL is: <br />
-      <%= current_user.get_endpoint_path %>
-    </p>
+    <div class="flash notice">
+      The endpoint URL for your client is:<br /><strong><%= "#{@user.get_endpoint_path}" %></strong>
+    </div>
     <p>
       <%= link_to 'Edit Your Profile', edit_user_path(current_user) %>
     </p>
