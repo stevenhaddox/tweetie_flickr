@@ -27,6 +27,15 @@
       <%- end -%>
     <%- end -%>  
 
+    <fieldset id="accounts">
+      <legend><span>Manage Accounts</span></legend>
+      <ul>
+       <li><%= link_to 'Reauthorize Flickr Account', @flickr.auth.url(:write) %></li>
+       <li><%= link_to 'Deauthorize Flickr Account', @user.flickr_deauth_url %></li>
+       <li><%= link_to 'Deauthorize Twitter Account', @user.twitter_deauth_url %></li>
+      </ul>
+    </fieldset>
+
     <%#- form.buttons do -%>
     <ul><%= form.commit_button %></ul>
     <%#- end -%>

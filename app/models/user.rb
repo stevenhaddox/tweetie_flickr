@@ -99,4 +99,16 @@ class User < ActiveRecord::Base
     url_client_hash = custom_client_hash.blank? ? client_hash : custom_client_hash
     "https://flickr4twitter.com/clients/tweetie/#{url_client_hash}.xml" 
   end  
+  
+  def flickr_deauth_url
+    token = flickr_token.split('-').first if flickr_token
+    deauth_url = "http://flickr.com/services/auth/list.gne?from=extend" if token.blank?
+    deauth_url ||= "http://www.flickr.com/services/auth/revoke.gne?token=#{token}" 
+    deauth_url
+  end
+
+  def twitter_deauth_url
+    "http://twitter.com/account/connections"
+  end
+
 end
