@@ -17,6 +17,7 @@
 #
 
 require 'uuid'
+require 'nokogiri'
 class User < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
 
@@ -33,8 +34,23 @@ class User < ActiveRecord::Base
 
   def self.get_flickr_id(flickr_username)
     flickr_api = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
-    p = flickr_api.people.find_by_username(flickr_username)
-    p.nsid
+    # flickr_username is _NOT_ the URL, but is the name displayed at the top of their profile page
+    # e.g. NOT 'katiecupcake', but 'katie.cupcake'
+    # begin
+    #   p = flickr_api.people.find_by_username(flickr_username) 
+    #   flickr_id = p.nsid
+    # rescue
+      # get their flickr user id from their Flickr profile icon image
+      flickr_html = Nokogiri::HTML(open("http://flickr.com/people/#{flickr_username}"))
+      id_img = flickr_html.css('.logo')
+      y id_img.to_s
+      id_img_src = id_img.attr('src').to_s
+      regex = /#(.*)$/
+      match = id_img_src.match(regex)
+      flickr_id = match[0] if match
+      flickr_id = flickr_id.gsub('#','')
+    # end
+    return flickr_id
   end
 
   # ====================
