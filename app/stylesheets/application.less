@@ -55,7 +55,9 @@ form label {
 }
 
 form .required { color: @pink; }
-
+form .disabled { background-color:#DDD; color:#000; }
+form.formtastic p.inline-hints { margin: 0 !important; }
+form.formtastic p.inline-hints strong { font-weight: bold; color: #000; }
 form fieldset, form.formtastic fieldset { 
   margin: 0 0 1em 0;
   border: 1px dashed @pink;
