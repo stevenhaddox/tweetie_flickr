@@ -7,6 +7,8 @@
 @pink_dark: #D91161;
 @blue_dark: #1766B0;
 @blue_light: #1EC2FF;
+@gray_dark: #AAA;
+@gray_light: #DDD;
 @header_color: #25AEF5; /* 1589B3 */
 @background_color: #FFF;
 
@@ -14,7 +16,12 @@
 /* = Layout = */
 /* ========== */
 #header { margin: 0 0 2em; border-bottom: 1px solid @pink_dark; padding: 0; height: 150px; }
-
+div#left_column { 
+  background-color: @gray_light; 
+  text-align: center;
+  margin-right: 8px; /* over-write blueprint span- class */
+  border: 1px solid @gray_dark;
+}
 
 /* ================== */
 /* = General styles = */
@@ -25,18 +32,19 @@ a:hover { color: @blue_dark; }
 .avatar { border: 1px solid @pink; } /* user avatars */
 .thumbnail { border: 1px solid @blue_dark; } /* Flickr photo thumbnails */
 
-.photo { clear: left; padding: 1.5em 0; }
-.photo_text { clear: left; }
+.photo { clear: left; margin: 0; padding: 0 0 .5em; }
+.photo_meta p { line-height: 1.4em; }
+.photo_meta .avatar { float: left; margin: 0 5px 5px 0; }
 
 /* ========= */
 /* = Menus = */
 /* ========= */
-ul#menu { list-style-type: none; margin: 0; padding: 0; }
+ul#menu { list-style-type: none; margin: 10px 0; padding: 0; }
 ul#menu li { float: left; width: auto; margin: 0 15px; }
 ul#menu a:link, ul#menu a:visited { color: @white; }
 ul#menu a:hover { color:@blue_dark; }
 
-ul#user_menu { list-style-type: none; padding: 0; }
+ul#user_menu { list-style-type: none; padding: 10px 0; margin: 0; }
 ul#user_menu li { width: auto; display: block; margin: 0 5px .5em; }
 
 
@@ -89,18 +97,17 @@ div.counter {
 /* = Pagination = */
 /* ============== */
 
-/*.pagination { clear: both; text-align: center; }*/
 .pagination { clear: both; text-align: center; padding: 1em .3em; }
 .pagination a, .pagination span { padding: .2em .5em; }
-.pagination span.disabled { color: #AAA; }
-.pagination span.current { font-weight: bold; color: #FF0084; }
-.pagination a { border: 1px solid #DDDDDD; color: #5A6D80; text-decoration: none; }
+.pagination span.disabled { color: @gray_light; } 
+.pagination span.current { font-weight: bold; color: @pink_dark; }
+.pagination a { border: 1px solid @gray_light; color: @blue_dark; text-decoration: none; }
 .pagination a:hover, .pagination a:focus { 
-  border-color: #003366; 
-  background: #5A6D80; 
-  color: white; 
+  border-color: @blue_dark; 
+  background: @gray_dark; 
+  color: @white; 
 }
-.pagination .page_info { color: #aaa; padding-top: .8em; }
+.pagination .page_info { color: @gray_light; padding-top: .8em; }
 .pagination .prev_page, .pagination .next_page { border-width: 2px; }
 .pagination .prev_page { margin-right: 1em; }
 .pagination .next_page { margin-left: 1em; }

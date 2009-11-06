@@ -3,21 +3,20 @@
     <%- for photo in @photos -%>
       <% div_for photo do %>
         <%- if photo.flickr_image -%>
-        <div class="photo_thumb span-3 first">
-      	  <p><%= link_to image_tag(photo.flickr_image.url('thumb'), :alt=>photo.flickr_image.url, :class=>'thumbnail'), photo.flickr_image.url() %></p>
+        <div class="photo_thumb span-3">
+      	  <p>
+            <%= link_to image_tag(photo.flickr_image.url('thumb'), :alt=>photo.flickr_image.url, :class=>'thumbnail'), photo_path(photo) %><br />
+            <%#= link_to photo.short_url, photo.short_url %>
+          </p>
       	</div>
       	<%- end -%> 
         <div class="photo_meta span-5">
           <p>
-            <%= link_to image_tag(photo.user.avatar_url('m'), :alt=>"#{photo.user.twitter_username} Avatar", :class=>'avatar'), "http://twitter.com/#{photo.user.twitter_username}" %> <em><%= photo.user.twitter_username %></em><br />
-            <em>Short URL:</em> <%= link_to photo.short_url, photo.short_url %><br />
+            <%= link_to image_tag(photo.user.avatar_url('m'), :alt=>"#{photo.user.twitter_username}", :title=>"#{photo.user.twitter_username}", :class=>'avatar'), user_path(photo.user) %>
+            <%=h photo.caption if photo.caption %> 
           </p>
         </div>
-        <%- if photo.caption -%>
-          <div class="photo_text first span-8">
-            <%=h photo.caption %>
-          </div>
-        <%- end -%>
+        <div class="clear"></div>
       <% end -%>
     <%- end -%>
     <%= will_paginate @photos %>
