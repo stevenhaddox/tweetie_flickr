@@ -35,6 +35,11 @@ class PhotosController < ApplicationController
       return unless @user.flickr_token
 
       @photo = @user.photos.new(params[:photo])
+      if params[:photo][:message]
+        @photo.caption = params[:photo][:message] 
+      elsif params[:message]
+        @photo.caption = params[:message]
+      end 
       @photo.image = params[:media] if params[:media]
       
       respond_to do |format|
