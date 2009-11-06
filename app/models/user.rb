@@ -74,8 +74,6 @@ class User < ActiveRecord::Base
     end
   end
 
-
-
   def custom_client_hash=(custom_client_hash_str=nil)
     if custom_client_hash_str.blank?
       write_attribute(:custom_client_hash, nil)
@@ -99,6 +97,16 @@ class User < ActiveRecord::Base
     url_client_hash = custom_client_hash.blank? ? client_hash : custom_client_hash
     "https://flickr4twitter.com/clients/tweetie/#{url_client_hash}.xml" 
   end  
+  
+  def avatar_url(size='n')
+    # size options: {
+    #   :m => '24x24',
+    #   :n => '48x48',
+    #   :b => '73x73',
+    #   :o => 'original'
+    # }
+    "http://img.tweetimag.es/i/#{twitter_username}_#{size}"
+  end
   
   def flickr_deauth_url
     token = flickr_token.split('-').first if flickr_token
