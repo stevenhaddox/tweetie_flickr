@@ -10,19 +10,30 @@
   </div>
   <%- end -%>
   
-  <div class="twitter">
-    <h1>Twitter Username: <%= link_to @user.twitter_username, "http://twitter.com/#{@user.twitter_username}" %></h1>
-  </div>
-  <div class="flickr">
-    <h2>Flickr Username: <%=h @user.flickr_username %></h2>
-    <p>
+  <div class="user_meta span-6">
+    <h2>
+  	 	<%= link_to @user.twitter_username, "http://twitter.com/#{@user.twitter_username}" %><br />
+    	<%= link_to image_tag(@user.avatar_url('b'), :alt=>"#{@user.twitter_username}'s Avatar", :title=>"#{@user.twitter_username}", :class=>'avatar'), "http://twitter.com/#{@user.twitter_username}" %>
+  	 </h2>
+	 <div class="flickr">
       <ul>
-        <li>Flickr Photos: <%= link_to 'Photos', "http://flickr.com/photos/#{@user.flickr_user_id}" %></li>
-        <li>Flickr Profile: <%= link_to 'Profile', "http://flickr.com/people/#{@user.flickr_user_id}" %></li>
-      </ul>
-    </p>
-    <div class="flickr_photos">
-      <h2>Recent Photos</h2>
-    </div>
+	     <li><%= link_to 'Flickr Photos', "http://flickr.com/photos/#{@user.flickr_user_id}" %></li>
+	     <li><%= link_to 'Flickr Profile', "http://flickr.com/people/#{@user.flickr_user_id}" %></li>
+	   </ul>
+	 </div>
   </div>
+  
+  <div class="flickr_photos span-14 last">
+    <h3>Recent Photos</h3>
+    <%- for photo in @recent_photos -%>
+      <% div_for photo do %>
+        <%- if photo.flickr_image -%>
+          <%= link_to image_tag(photo.flickr_image.url('square'), :alt=>photo.flickr_image.url, :title=>photo.caption, :class=>'thumbnail'), photo_path(photo) %>
+        <%- else -%>
+          <%= link_to image_tag('/images/missing_square.png', :alt=>'?', :title=>'Missing Photo', :class=>'thumbnail'), photo_path(photo) %>		  
+		  <%- end -%>
+		<% end -%>
+    <%- end -%>
+  </div>
+
 </div>

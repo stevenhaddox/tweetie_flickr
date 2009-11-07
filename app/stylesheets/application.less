@@ -27,14 +27,26 @@ div#left_column {
 /* = General styles = */
 /* ================== */
 #header { background-color: @header_color; }
-a:link, a:visited { color: @pink_dark; }
+a:link, a:visited { color: @pink_dark; text-decoration: none; }
 a:hover { color: @blue_dark; }
 .avatar { border: 1px solid @pink; } /* user avatars */
 .thumbnail { border: 1px solid @blue_dark; } /* Flickr photo thumbnails */
 
 .photo { clear: left; margin: 0; padding: 0 0 .5em; }
 .photo_meta p { line-height: 1.4em; }
-.photo_meta .avatar { float: left; margin: 0 5px 5px 0; }
+.photo_meta .avatar { float: left; margin: 0 5px 5px 0; padding: 1px; }
+#photo_show .photo { text-align: center; }
+#photo_show .spotlight { border: 4px double @blue_dark; margin: 0 0 1.5em; padding: 2px; }
+#photo_show .caption { text-align: center; margin: 0 auto; }
+#photo_show .avatar { float: left; margin: 5px 0 0 5px; padding: 1px; }
+
+.user_meta { padding-bottom: 1em; }
+.user_meta h2 { margin-bottom: 0.25em; }
+.user_meta .avatar { float: left; margin: 5px 5px 0 0; padding: 3px; }
+.user_meta ul { list-style-type: none; margin: 0; padding: 0; }
+.user_meta ul li { margin: 0; padding: 0; }
+#user_show .flickr_photos .photo { float: left; clear: none; margin: 0; padding: 0; }
+#user_show .flickr_photos .photo .thumbnail { margin: 0 5px 5px 0; padding: 0; }
 
 /* ========= */
 /* = Menus = */

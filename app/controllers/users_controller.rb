@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @recent_photos = @user.photos.find(:all, :limit=>12, :order=>'created_at DESC')
   end
   
   def new

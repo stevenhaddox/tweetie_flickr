@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
 
 
   def self.get_flickr_id(flickr_username)
-    flickr_api = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
+    # flickr_api = Flickr.new(FLICKR) # FLICKR.merge(:token => flickr_token)
     # flickr_username is _NOT_ the URL, but is the name displayed at the top of their profile page
     # e.g. NOT 'katiecupcake', but 'katie.cupcake'
     # begin
@@ -56,6 +56,10 @@ class User < ActiveRecord::Base
   # ====================
   # = Instance methods =
   # ====================
+
+  def flickr_api
+    @flickr_api ||= Flickr.new(FLICKR.merge(:token => flickr_token))
+  end
 
   def authorized?
     twiter_rtoken.present? && twitter_rsecret.present?
