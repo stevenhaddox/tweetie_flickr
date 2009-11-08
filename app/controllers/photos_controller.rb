@@ -81,6 +81,7 @@ logger.debug "params[:photo][:image]: #{params[:media].blank?}"
           message = params[:photo][:message]
           if @photo.short_url
             message += " #{@photo.short_url}"
+            @photo.update_attribute(:caption, message)
             tweet = current_user.client.update(message)
           end          
           flash[:notice] = "Your tweet has been posted successfully"
