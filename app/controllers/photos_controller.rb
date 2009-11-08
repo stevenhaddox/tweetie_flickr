@@ -18,7 +18,6 @@ class PhotosController < ApplicationController
   # POST /photos.xml
   def create
     @is_xml = format_is_xml?(params[:format])
-    logger.debug "Request.format_is_xml?: #{@is_xml}"
     # verify we have a valid authenticated user by current_user session 
     # OR lookup username by custom_client_hash (multiple tweetie accounts) or client_hash
     if @is_xml==true
@@ -26,7 +25,6 @@ class PhotosController < ApplicationController
         render :xml => '<?xml version="1.0" encoding="UTF-8"?><errors><error>Invalid Credentials</error></errors>' and return
       end
       tmp_user = User.find_by_twitter_username(params[:username])
-		logger.debug "Found tmp_user: #{tmp_user.twitter_username}"
       if tmp_user
         @user = tmp_user.custom_client_hash.blank? ? User.find_by_twitter_username_and_client_hash(params[:username],params[:client_hash]) : User.find_by_twitter_username_and_custom_client_hash(params[:username],params[:client_hash])
         tmp_user=nil # I don't like keeping users around... even in temporary variables
@@ -36,9 +34,7 @@ class PhotosController < ApplicationController
         @user = @is_xml==true ? nil : current_user
       end
     end
-    
-    logger.debug "@user: Nil? #{@user.blank?} - #{@user.id}: #{@user.twitter_username}"
-    
+        
     unless @user
       if @is_xml==true
         render :xml => '<?xml version="1.0" encoding="UTF-8"?><errors><error>Invalid Credentials</error></errors>' and return
@@ -49,7 +45,6 @@ class PhotosController < ApplicationController
 
     # make sure our user is authenticated with Flickr
     unless @user.flickr_token
-		logger.debug "NO FLICKR TOKEN!!!"    
       if @is_xml==true
         render :xml => '<?xml version="1.0" encoding="UTF-8"?><errors><error>Invalid Credentials</error></errors>' and return
       else
@@ -60,23 +55,15 @@ class PhotosController < ApplicationController
     # create a photo instance params hash if sent via a client
     unless params[:photo]
       params[:photo]={}
-logger.debug "params[:photo][:caption]: #{params[:message]}"      
       params[:photo][:caption] = params[:message]
-logger.debug "params[:photo][:image]: #{params[:media].blank?}"
       params[:photo][:image] = params[:media]
     end
     
-	 logger.debug "params[:photo]: #{params[:photo].inspect}"    
     # create the new photo
     @photo = @user.photos.new(params[:photo])
 
-    logger.debug '-'*80
-    logger.debug @photo.errors.inspect
-
     respond_to do |format|
       if @photo.save
-		  logger.debug '*'*80
-		  logger.debug "Photo Saved: #{@photo.inspect}"
         if current_user
           message = params[:photo][:message]
           if @photo.short_url
