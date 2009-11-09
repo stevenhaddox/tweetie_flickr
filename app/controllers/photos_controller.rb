@@ -65,9 +65,13 @@ class PhotosController < ApplicationController
     respond_to do |format|
       if @photo.save
         if current_user
-          message = params[:photo][:message]
+          message = params[:photo][:caption]
           if @photo.short_url
-            message += " #{@photo.short_url}"
+            if message
+              message += " #{@photo.short_url}"
+            else
+              message = "#{@photo.short_url}"
+            end 
             @photo.update_attribute(:caption, message)
             tweet = current_user.client.update(message)
           end          
