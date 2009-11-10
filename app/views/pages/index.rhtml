@@ -5,6 +5,19 @@
     If you have any problems please send us a DM / mention on Twitter <a href="http://twitter.com/flickr4tw1tter">@flickr4tw1tter</a>
   </div>
 
+  <p>
+    Flickr4Twitter is the easiest way to upload your photos to Flickr and post them to Twitter. 
+    You can either use Flickr4Twitter.com or any supported Twitter client (currently Tweetie for the iPhone).
+    Read more details and learn how to setup your client by <%= link_to 'joining', page_path('join') %>.
+  </p>
+  
+  <p>
+    Looking for something more entertaining? You can <%= link_to 'view', photos_url %> other Tweeps' photos.
+    <%- if current_user -%>
+     Or you can <%= link_to 'tweet your own photo', new_photo_path %>.
+    <%- end -%>
+  </p>
+
   <%- unless current_user -%>
     <h3>Not a member yet?</h3>
     <div id="join_link">

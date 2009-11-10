@@ -6,11 +6,11 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
  
   def index
-    @users = User.all
+    @users = User.all.paginate :page => params[:page], :order => :name
   end
 
   def show
-    @recent_photos = @user.photos.find(:all, :limit=>12, :order=>'created_at DESC')
+    @photos = @user.photos.paginate :page => params[:page], :order => 'created_at DESC', :per_page => 18
   end
   
   def new

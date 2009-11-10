@@ -25,7 +25,7 @@
   
   <div class="flickr_photos span-14 last">
     <h3>Recent Photos</h3>
-    <%- for photo in @recent_photos -%>
+    <%- for photo in @photos -%>
       <% div_for photo do %>
         <%- if photo.flickr_image -%>
           <%= link_to image_tag(photo.flickr_image.url('square'), :alt=>photo.flickr_image.url, :title=>photo.caption, :class=>'thumbnail'), photo_path(photo) %>
@@ -34,6 +34,7 @@
 		  <%- end -%>
 		<% end -%>
     <%- end -%>
+    <%= will_paginate @photos %>
   </div>
 
 </div>

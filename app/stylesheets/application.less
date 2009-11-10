@@ -32,7 +32,7 @@ a:hover { color: @blue_dark; }
 .avatar { border: 1px solid @pink; } /* user avatars */
 .thumbnail { border: 1px solid @blue_dark; } /* Flickr photo thumbnails */
 
-.photo { clear: left; margin: 0; padding: 0 0 .5em; }
+.photo { margin: 0; padding: 0 0 .5em; height: 120px; }
 .photo_meta p { line-height: 1.4em; }
 .photo_meta .avatar { float: left; margin: 0 5px 5px 0; padding: 1px; }
 #photo_show .photo { text-align: center; }
@@ -45,8 +45,9 @@ a:hover { color: @blue_dark; }
 .user_meta .avatar { float: left; margin: 5px 5px 0 0; padding: 3px; }
 .user_meta ul { list-style-type: none; margin: 0; padding: 0; }
 .user_meta ul li { margin: 0; padding: 0; }
-#user_show .flickr_photos .photo { float: left; clear: none; margin: 0; padding: 0; }
+#user_show .flickr_photos .photo { float: left; clear: none; margin: 0; padding: 0; height: 82px; }
 #user_show .flickr_photos .photo .thumbnail { margin: 0 5px 5px 0; padding: 0; }
+#user_show .flickr_photos .pagination { width: 480px; }
 
 /* ========= */
 /* = Menus = */
@@ -110,7 +111,7 @@ div.counter {
 /* = Pagination = */
 /* ============== */
 
-.pagination { clear: both; text-align: center; padding: 1em .3em; }
+.pagination { clear: both; text-align: center; padding: 1em .3em; width: 600px; }
 .pagination a, .pagination span { padding: .2em .5em; }
 .pagination span.disabled { color: @gray_light; } 
 .pagination span.current { font-weight: bold; color: @pink_dark; }

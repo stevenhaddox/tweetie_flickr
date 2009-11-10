@@ -1,7 +1,7 @@
 <div id="photo_show">
   <% div_for @photo do %>
     <%- if @photo.flickr_image -%>
-      <%= link_to image_tag(@photo.flickr_image.url('medium'), :alt=>@photo.short_url, :title=>@photo.caption, :class=>'spotlight'), @photo.short_url %>
+      <%= link_to image_tag(@photo.flickr_image.url('medium'), :alt=>@photo.short_url, :title=>"View this photo on Flickr", :class=>'spotlight'), @photo.short_url %>
     <%- else -%>
 		<%= link_to image_tag('/images/missing.png', :alt=>"Missing photo", :title=>'This photo is either private or has been deleted', :class=>'spotlight'), @photo.short_url %>
     <%- end -%>

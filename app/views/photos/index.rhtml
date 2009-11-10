@@ -1,7 +1,7 @@
 <div id="photos">
   <%- unless @photos.blank? -%>
     <%- for photo in @photos -%>
-      <% div_for photo do %>
+      <% div_for photo, :class=>'span-9 append-1' do %>
         <div class="photo_thumb span-3">
           <p>
           <%- if photo.flickr_image -%>
@@ -17,11 +17,11 @@
             <%=h photo.caption if photo.caption %> 
           </p>
         </div>
-        <div class="clear"></div>
+        <!-- <div class="clear"></div> -->
       <% end -%>
     <%- end -%>
-    <%= will_paginate @photos %>
   <%- else -%>
     <p>There are currently no photos to display.</p>
   <%- end -%>
 </div>
+<%= will_paginate @photos %>

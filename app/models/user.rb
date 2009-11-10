@@ -22,7 +22,9 @@ class User < ActiveRecord::Base
   has_many :photos, :dependent => :destroy
 
   attr_accessor :new_custom_client_hash, :reset_custom_client_hash
-
+  cattr_reader :per_page
+  @@per_page = 20
+  
   def to_param
     twitter_username
   end
