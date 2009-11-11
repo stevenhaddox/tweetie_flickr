@@ -1,4 +1,6 @@
+<%- content_for :title do -%>Photos<%- end -%>
 <div id="photos">
+  <h2>Recent Photos Tweeted through Flickr4Twitter</h2>
   <%- unless @photos.blank? -%>
     <%- for photo in @photos -%>
       <% div_for photo, :class=>'span-9 append-1' do %>

@@ -1,5 +1,5 @@
 <div id="home_page">
-
+  <h2>Welcome to Flickr4Twitter</h2>
   <div class="notice">
     Flickr4Twitter.com is in very early ALPHA stages and does not yet have much of a user interface.<br />
     If you have any problems please send us a DM / mention on Twitter <a href="http://twitter.com/flickr4tw1tter">@flickr4tw1tter</a>
@@ -7,7 +7,7 @@
 
   <p>
     Flickr4Twitter is the easiest way to upload your photos to Flickr and post them to Twitter. 
-    You can either use Flickr4Twitter.com or any supported Twitter client (currently Tweetie for the iPhone).
+    You can post through the web with Flickr4Twitter.com or any supported Twitter client (such as Tweetie 2).
     Read more details and learn how to setup your client by <%= link_to 'joining', page_path('join') %>.
   </p>
   
@@ -28,4 +28,10 @@
       <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
     <%- end -%>
   <%- end -%>
+
+  <div id="tweet">
+    <strong>Last Tweet</strong> from <%=h DateTime.parse(@recent_tweets.first[:date]).to_date %>:<br />
+    <%=h @recent_tweets.first[:tweet] %>
+  </div>
+
 </div>

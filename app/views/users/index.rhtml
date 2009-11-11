@@ -1,8 +1,11 @@
+<%- content_for :title do -%>Users<%- end -%>
 <div id="users">
+  <h2>Twitter Users on Flickr4TWitter</h2>
   <%- if !@users.blank? -%>
     <%- for user in @users -%>
-      <% div_for user do %>
-        <p><%= link_to user.twitter_username, user_path(user) %></p>
+      <% div_for user, :class=>"span-4" do %>
+        <%= link_to image_tag(user.avatar_url('n'), :alt=>"#{user.twitter_username}", :title=>"#{user.twitter_username}", :class=>'avatar'), user_path(user) %>
+        <br /><%= link_to user.twitter_username, user_path(user) %>
       <% end -%>
     <%- end -%>
   <%- else -%>
