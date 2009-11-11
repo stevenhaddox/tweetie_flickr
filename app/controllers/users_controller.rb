@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
  
   def index
-    @users = User.all.paginate :page => params[:page], :order => :twitter_username
+    @users = User.paginate :page => params[:page], :order => :twitter_username
   end
 
   def show
