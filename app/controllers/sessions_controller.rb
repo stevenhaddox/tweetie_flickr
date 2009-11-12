@@ -35,7 +35,7 @@ class SessionsController < ApplicationController
     sign_in(user)
 
     if current_user.flickr_token && current_user.flickr_user_id
-      redirect_back_or root_path
+      redirect_to root_path
     else
       redirect_to edit_user_path(user)
     end
