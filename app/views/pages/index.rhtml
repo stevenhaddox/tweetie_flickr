@@ -47,9 +47,11 @@
     </ul>
   </div>
 
+  <%- unless @recent_tweets.blank? -%>
   <div id="tweet">
     <strong>Last Tweet</strong> from <%=h DateTime.parse(@recent_tweets.first[:date]).to_date %>:<br />
     <%=h @recent_tweets.first[:tweet] %>
   </div>
+  <%- end -%>
 
 </div>
