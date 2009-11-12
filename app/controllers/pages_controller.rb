@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   
-  PAGES = ['index','join']
+  PAGES = ['index','join','join_tweetie','join_web_interface']
 
   def index
     f4t_search = Twitter::Search.new.from('flickr4tw1tter')
@@ -10,7 +10,11 @@ class PagesController < ApplicationController
   end
 
   def show
-    render :action => params[:page]
+    if PAGES.include?(params[:page])
+      render :action => params[:page]
+    else
+      redirect_to '/404.html'
+    end
   end
 
 end
