@@ -1,3 +1,4 @@
+<%- content_for :title do -%><%= "#{@user.twitter_username}'s Profile" %><%- end -%>
 <div id="user_show" class="user">
   <%- if current_user == @user -%>
   <div class="private">

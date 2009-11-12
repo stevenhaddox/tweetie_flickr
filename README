@@ -47,3 +47,18 @@ Tweetie will send
 TODO:
 [ ] Proper testing on the models and controllers
 [ ] Some real tests with mock webservice calls
+
+==========
+Features:
+Flickr4Twitter is a full-service endpoint that provides the the easiest way to upload your photos to Flickr and post them to your Twitter timeline. You can post through the web with Flickr4Twitter.com or any supported Twitter client (such as Tweetie 2). Flickr4Twitter features include:
+
+    * Is open-source and got a good start thanks to ebonical's tweetie_flickr project on Github
+    * Returns a Flickr short URL (http://flic.kr/) for your photo to your tweet or Twitter client (including Tweetie 2)
+    * Autotags with "iPhone" and "flickr4twitter" currently
+    * Converts any hashtags in your tweet into Flickr photo tags
+    * Automatically updates your Flickr photo description to the text of the tweet you posted as well as a URL for your tweet
+    * Has a basic web interface to view your photos as well as photos uploaded by other users
+    * You can also upload via the website once you are logged in so that you don't have to use yet another service to tweet from the web when your mobile twitter client isn't handy.
+    * Authenticates via Twitter's OAuth service and does not store your Twitter password in any way (even if a client sends it)
+    * Posts all sensitive data and images over SSL to ensure your security
+    * Generates a unique endpoint URL based upon your Twitter OAuth hash (or a custom one you generate if you have several Twitter accounts using the same client)
