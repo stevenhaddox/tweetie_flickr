@@ -4,7 +4,7 @@
 $(document).ready(function() {
   // $.untinyurl('http://flic.kr/p/79HeuN');
 
-	$('textarea#photo_message').maxlength({ 
+	$('textarea#photo_caption').maxlength({ 
 	  events:             [], // Array of events to be triggerd 
 	  maxCharacters:      125, // Characters limit 
 	  status:             true, // True to show status indicator bewlow the element 
