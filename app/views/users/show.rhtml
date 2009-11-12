@@ -17,10 +17,12 @@
     	<%= link_to image_tag(@user.avatar_url('b'), :alt=>"#{@user.twitter_username}'s Avatar", :title=>"#{@user.twitter_username}", :class=>'avatar'), "http://twitter.com/#{@user.twitter_username}" %>
   	 </h2>
 	 <div class="flickr">
+	   <%- unless @user.flickr_user_id.blank? -%>
       <ul>
 	     <li><%= link_to 'Flickr Photos', "http://flickr.com/photos/#{@user.flickr_user_id}" %></li>
 	     <li><%= link_to 'Flickr Profile', "http://flickr.com/people/#{@user.flickr_user_id}" %></li>
 	   </ul>
+	  <%- end -%>
 	 </div>
   </div>
   
