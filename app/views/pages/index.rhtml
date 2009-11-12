@@ -2,8 +2,20 @@
   <h2>Welcome to Flickr4Twitter</h2>
   <div class="notice">
     Flickr4Twitter.com is in very early ALPHA stages and does not yet have much of a user interface.<br />
-    If you have any problems please send us a DM / mention on Twitter <a href="http://twitter.com/flickr4tw1tter">@flickr4tw1tter</a>
+    If you have any problems please send us a DM / mention on Twitter <a href="http://twitter.com/flickr4tw1tter">@flickr4tw1tter</a><br />
+    You can also post ideas or suggestions to our <a href="http://getsatisfaction.com/flickr4twitter">GetSatisfaction</a> page.
   </div>
+
+  <%- unless current_user -%>
+  <div id="login_box">
+    <h3>Not a member yet?</h3>
+      <p><%= link_to 'Join', page_url('join') %></p>
+    </div>
+    <h3>Already a member?</h3>
+    <%- form_tag session_path do -%>
+      <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
+    <%- end -%>
+  <%- end -%>
 
   <p>
     Flickr4Twitter is the easiest way to upload your photos to Flickr and post them to Twitter. 
@@ -18,16 +30,21 @@
     <%- end -%>
   </p>
 
-  <%- unless current_user -%>
-    <h3>Not a member yet?</h3>
-    <div id="join_link">
-      <p><%= link_to 'Join', page_url('join') %></p>
-    </div>
-    <h3>Already a member?</h3>
-    <%- form_tag session_path do -%>
-      <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
-    <%- end -%>
-  <%- end -%>
+  <div id="features">
+    Flickr4Twitter is a full-service endpoint that provides the following features:
+    <ul>
+      <li>Is <a href="http://github.com/stevenhaddox/tweetie_flickr">open-source</a> and got a good start thanks to ebonical's <a href="http://github.com/ebonical/tweetie_flickr">tweetie_flickr</a> project on <a href="http://github.com">Github</a></li>
+      <li>Returns a Flickr short URL (http://flic.kr/) for your photo to your tweet or Twitter client (including Tweetie 2)</li>
+      <li>Autotags with "iPhone" and "flickr4twitter" currently</li>
+      <li>Converts any hashtags in your tweet into Flickr photo tags</li>
+      <li>Automatically updates your Flickr photo description to the text of the tweet you posted as well as a URL for your tweet</li>
+      <li>Has a basic web interface to view your photos as well as photos uploaded by other <%= link_to 'users', photos_path %></li>
+      <li>You can also <%= link_to 'upload', new_photo_path %> via the website once you are logged in so that you don't have to use yet another service to tweet from the web when your mobile twitter client isn't handy.</li>
+      <li>Authenticates via Twitter's OAuth service and does <strong>not</strong> store your Twitter password in any way (even if a client sends it)</li>
+      <li>Posts all sensitive data and images over SSL to ensure your security</li>
+      <li>Generates a unique endpoint URL based upon your Twitter OAuth hash (or a custom one you generate if you have several Twitter accounts using the same client)</li>
+    </ul>
+  </div>
 
   <div id="tweet">
     <strong>Last Tweet</strong> from <%=h DateTime.parse(@recent_tweets.first[:date]).to_date %>:<br />
