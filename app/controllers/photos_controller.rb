@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:create]
-  before_filter :authenticate, :only => [:new]
+  before_filter :check_login, :only => [:new]
   ssl_required :new, :create unless Rails.env.development?
   
   def index
@@ -106,4 +106,9 @@ private
   def format_is_xml?(format=nil)
     return nil if format.blank?
     return format=='xml' ? true : nil
+  end
+
+  def check_login
+    return true if current_user
+    redirect_to login_path #redirect to a non SSL page to ensure we don't throw an error
   end
