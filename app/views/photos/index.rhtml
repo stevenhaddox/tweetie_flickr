@@ -2,6 +2,25 @@
 <div id="photos">
   <h2>Recent Photos Tweeted through Flickr4Twitter</h2>
   <%- unless @photos.blank? -%>
+    <div id="controls"></div>
+    <div id="loading"></div>
+    <div id="slideshow"></div>
+    <div id="caption"></div>
+    <div id="thumbs">
+      <ul class="thumbs noscript">
+        <%- for photo in @photos -%>
+        <li>
+          <%- if photo.flickr_image -%>
+            <%= link_to image_tag(photo.flickr_image.url('square'), :alt=>photo.short_url, :title=>photo.short_url), photo.flickr_image.url('medium')	, :class=>'thumb' %>
+          <%- else -%>
+            <%= link_to image_tag('/images/missing_square.png', :alt=>'?', :title=>'Missing Photo'), '/images/missing.png', :class=>'thumb' %>
+          <%- end -%>
+          <div class="caption"><%= photo.caption %></div>
+        </li>
+		<%- end -%>
+      </ul>
+    </div>
+<!--
     <%- for photo in @photos -%>
       <% div_for photo, :class=>'span-9 append-1' do %>
         <div class="photo_thumb span-3">
@@ -19,9 +38,9 @@
             <%=h photo.caption if photo.caption %> 
           </p>
         </div>
-        <!-- <div class="clear"></div> -->
       <% end -%>
     <%- end -%>
+-->
   <%- else -%>
     <p>There are currently no photos to display.</p>
   <%- end -%>

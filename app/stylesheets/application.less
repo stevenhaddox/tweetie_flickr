@@ -32,8 +32,13 @@ a:hover { color: @blue_dark; }
 .avatar { border: 1px solid @pink; } /* user avatars */
 .thumbnail { border: 1px solid @blue_dark; } /* Flickr photo thumbnails */
 
+#photos #thumbs ul.thumbs { list-style-type: none; width: 720px; margin: 0 auto; padding: 0; }
+#photos #thumbs ul.thumbs li a.thumb { float: left; margin: 0 5px 5px 0; padding: 0; }
+
+/*
 .photo { margin: 0; padding: 0 0 .5em; height: 120px; }
 .photo_meta p { line-height: 1.4em; }
+*/
 .photo_meta .avatar { float: left; margin: 0 5px 5px 0; padding: 1px; }
 #photo_show .photo { text-align: center; }
 #photo_show .spotlight { border: 4px double @blue_dark; margin: 0 0 1.5em; padding: 2px; }
@@ -115,7 +120,7 @@ div.counter {
 /* = Pagination = */
 /* ============== */
 
-.pagination { clear: both; text-align: center; padding: 1em .3em; width: 600px; }
+.pagination { clear: both; text-align: center; padding: 1em .3em; width: 720px; }
 .pagination a, .pagination span { padding: .2em .5em; }
 .pagination span.disabled { color: @gray_light; } 
 .pagination span.current { font-weight: bold; color: @pink_dark; }
