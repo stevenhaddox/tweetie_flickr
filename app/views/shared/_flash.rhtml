@@ -1,0 +1,7 @@
+<div id="flashWrapper">
+  <%- if flash -%>
+    <%- flash.each do |m| -%>
+      <div class="<%= m[0] %>"><%= m[1] %></div>
+    <%- end -%>
+  <%- end -%>
+</div> 
