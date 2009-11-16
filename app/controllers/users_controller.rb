@@ -32,7 +32,7 @@ class UsersController < ApplicationController
         if flickr_username.match('/')
           flickr_username = flickr_username.gsub('http://flickr.com/people/','').gsub('/','')
         end
-        new_flickr_id = check_flickr_user_id(flickr_username])
+        new_flickr_id = check_flickr_user_id(flickr_username)
         if new_flickr_id.blank?
           params[:user].delete(:flickr_username)
         else

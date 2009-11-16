@@ -8,7 +8,7 @@
     <%- end -%>
     <p class="span-13 caption">
       <%= link_to image_tag(@photo.user.avatar_url('n'), :alt=>"#{@photo.user.twitter_username}", :title=>"#{@photo.user.twitter_username}", :class=>'avatar'), user_path(@photo.user) %>
-    	<%=h @photo.caption if @photo.caption %> 
+      <%=h @photo.caption if @photo.caption %> 
     </p>
   <% end -%>
 </div>
