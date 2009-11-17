@@ -28,7 +28,7 @@ class UsersController < ApplicationController
     # convert the flickr_username to their flickr_user_id 
     if params[:user]
       if params[:user][:flickr_username]
-        flickr_username = params[:user][:flickr_username].strip.gsub
+        flickr_username = params[:user][:flickr_username].strip
         if flickr_username.match('/')
           flickr_username = flickr_username.gsub('http://flickr.com/people/','').gsub('/','')
         end

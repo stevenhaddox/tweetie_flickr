@@ -14,11 +14,12 @@
           <div class="caption">
             <p>
             <%= link_to image_tag(photo.user.avatar_url('n'), :alt=>"#{photo.user.twitter_username}", :title=>"#{photo.user.twitter_username}", :class=>'avatar'), user_path(photo.user) %>
-            <%= "Uploaded by: #{photo.user.twitter_username}" %><br />
-            <%= "Uploaded on: #{photo.created_at}" %><br />
+            <%= "Uploaded by: #{photo.user.twitter_username} on #{photo.created_at}" %><br />
+            <%= "Flickr Link: #{photo.short_url}"%><br />
             Photo Permalink: <%= link_to photo_url(photo), photo_url(photo) %><br />
             <%= photo.caption %>
             </p>
+            <div class="clear"></div>
           </div>
         </li>
   	<%- end -%>
