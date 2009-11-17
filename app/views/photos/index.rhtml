@@ -3,7 +3,7 @@
   <h2>Recent Photos Tweeted through Flickr4Twitter</h2>
   <%- unless @photos.blank? -%>
     <div id="thumbs">
-      <ul class="thumbs noscript">
+      <ul class="thumbs">
         <%- for photo in @photos -%>
         <li>
           <%- if photo.flickr_image -%>
