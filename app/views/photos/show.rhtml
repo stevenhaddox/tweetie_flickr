@@ -8,7 +8,10 @@
     <%- end -%>
     <p class="span-13 caption">
       <%= link_to image_tag(@photo.user.avatar_url('n'), :alt=>"#{@photo.user.twitter_username}", :title=>"#{@photo.user.twitter_username}", :class=>'avatar'), user_path(@photo.user) %>
-      <%=h @photo.caption if @photo.caption %> 
+      <%= "Uploaded by #{@photo.user.twitter_username} #{time_ago_in_words(@photo.created_at)} ago" %><br />
+      Flickr Link: <%= link_to @photo.short_url, @photo.short_url %><br />
+      Photo Permalink: <%= link_to photo_url(@photo), photo_url(@photo) %><br />
+      <%=h @photo.caption %>
     </p>
   <% end -%>
 </div>
