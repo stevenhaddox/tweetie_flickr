@@ -1,0 +1,9 @@
+<div id="login_box">
+  <div id="login">
+    <strong>Member?</strong>
+    <%- form_tag session_path do -%><%= image_submit_tag 'twitter_sign_in_small.png' %><%- end -%>
+  </div>
+  <div id="learn_more">
+    <strong>Not a Member?</strong><br /><%= link_to 'Learn More', page_url('join') %>
+  </div>
+</div>

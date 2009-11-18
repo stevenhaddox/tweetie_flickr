@@ -6,17 +6,6 @@
     You can also post ideas or suggestions to our <a href="http://getsatisfaction.com/flickr4twitter">GetSatisfaction</a> page.
   </div>
 
-  <%- unless current_user -%>
-  <div id="login_box">
-    <h3>Not a member yet?</h3>
-      <p><%= link_to 'Join', page_url('join') %></p>
-    </div>
-    <h3>Already a member?</h3>
-    <%- form_tag session_path do -%>
-      <p><%= image_submit_tag 'twitter_sign_in.png' %></p>
-    <%- end -%>
-  <%- end -%>
-
   <h2>What is Flickr4Twitter?</h2>
   <p>
     Flickr4Twitter is the easiest way to upload your photos to Flickr and post them to Twitter. 
@@ -49,8 +38,10 @@
 
   <%- unless @recent_tweets.blank? -%>
   <div id="tweet">
-    <strong>Last Tweet</strong> from <%=h DateTime.parse(@recent_tweets.first[:date]).to_date %>:<br />
-    <%=h @recent_tweets.first[:tweet] %>
+    <%- if @recent_tweets -%>
+      <strong>Last Tweet</strong> from <%=h DateTime.parse(@recent_tweets.first[:date]).to_date %>:<br />
+      <%=h @recent_tweets.first[:tweet] %>
+    <%- end -%>
   </div>
   <%- end -%>
 

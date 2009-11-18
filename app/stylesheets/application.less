@@ -15,17 +15,26 @@
 /* ========== */
 /* = Layout = */
 /* ========== */
-#header { margin: 0 0 2em; border-bottom: 1px solid @pink_dark; padding: 0; height: 150px; }
+#header { margin: 0 0 2em; border-bottom: 1px solid @pink_dark; padding: 0; height: 150px; position: relative; }
+#main_content { position: relative; }
 div#left_column { 
   background-color: @gray_light;
   text-align: center;
+	margin-top: 3em;
   margin-right: 8px; /* over-write blueprint span- class */
   border: 1px solid @blue_dark;
+  padding: 10px 0;
 }
 div#right_column { position: relative; }
 div.container { margin-bottom: 2em; }
 
-div#host_ad { position: absolute; bottom: 0; right: 0; }
+div#host_ad {
+	margin-top: -1.5em;
+	position: absolute;
+	top: 0;
+	left:0;
+	line-height: 0em;
+}
 
 /* ================== */
 /* = General styles = */
@@ -35,7 +44,6 @@ a:link, a:visited { color: @pink_dark; text-decoration: none; }
 a:hover { color: @blue_dark; }
 .avatar { border: 1px solid @pink; vertical-align: middle; float: left; margin: 0 5px 5px; } /* user avatars */
 .thumbnail { border: 1px solid @blue_dark; } /* Flickr photo thumbnails */
-#user_menu .avatar { float: none; }
 
 #photos #slideshow, #photos #loading { text-align: center; }
 #photos #slideshow img { border: 4px double @blue_dark; padding: 2px; }
@@ -79,7 +87,7 @@ a:hover { color: @blue_dark; }
 /* ========= */
 /* = Menus = */
 /* ========= */
-ul#menu { list-style-type: none; margin: 10px 0; padding: 0; }
+ul#menu { list-style-type: none; margin: 0; padding: 0; }
 ul#menu li { float: left; width: auto; margin: 0 15px; }
 ul#menu a:link, ul#menu a:visited { color: @white; }
 ul#menu a:hover { color: @white; text-decoration: underline; }
@@ -87,6 +95,8 @@ ul#menu a:hover { color: @white; text-decoration: underline; }
 ul#user_menu { list-style-type: none; padding: 10px 0; margin: 0; }
 ul#user_menu li { width: auto; display: block; margin: 0 5px .5em; }
 ul#user_menu .avatar { float: none; }
+
+#login_box #login, #login_box #learn_more { margin-bottom: 1em; }
 
 /* ================ */
 /* = Form Styling = */
