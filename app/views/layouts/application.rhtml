@@ -38,7 +38,7 @@
       <%- end -%>
     </div>
     <div class="span-20 prepend-1 last" id="right_column">
-      <%= render :partial => "shared/flash" %>
+      <%= render :partial => "shared/flash", :locals => {:flash => flash} %>
       <%= yield %>
     </div>
     <div id="host_ad">

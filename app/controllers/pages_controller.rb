@@ -11,6 +11,10 @@ class PagesController < ApplicationController
     end
     
     # render the landing page
+    respond_to do |format|
+      # format.iphone # index.iphone.erb
+      format.html # index.rhtml
+    end
   end
 
   def show
