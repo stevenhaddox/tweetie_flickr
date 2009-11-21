@@ -4,8 +4,9 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <title><%= yield(:title).blank? ? 'Flickr4Twitter' : "#{yield(:title)} - Flickr4Twitter" %></title>
-  <%= stylesheet_link_tag 'iui' %>
-  <%= javascript_include_tag 'iui' %>
+  <style type="text/css" media="screen">@import "jqtouch.css";</style>
+  <style type="text/css" media="screen">@import "themes/jqt/theme.min.css";</style>
+  <script src="jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
 </head>
 <body>
     <div class="toolbar">
