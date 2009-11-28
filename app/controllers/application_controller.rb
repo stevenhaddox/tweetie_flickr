@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include Twitter::AuthenticationHelpers
   before_filter :check_flickr_auth
+  before_filter :set_iphone_format
+
   include SslRequirement
 
   helper :all # include all helpers, all the time
@@ -26,4 +28,15 @@ private
       redirect_to edit_user_path(current_user) unless exempt_controllers.include?(params[:controller])
     end
   end
+
+  # Request from an iPhone or iPod touch? (Mobile Safari user agent)
+  def iphone_user_agent?
+    request.env["HTTP_USER_AGENT"] && request.env["HTTP_USER_AGENT"][/(Mobile\/.+Safari)/]
+  end
+
+
+  def set_iphone_format
+    request.format = :iphone if iphone_user_agent?
+  end
+
 end
