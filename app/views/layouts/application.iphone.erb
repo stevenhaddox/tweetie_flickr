@@ -4,9 +4,10 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta id="viewport" name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
   <title><%= yield(:title).blank? ? 'Flickr4Twitter' : "#{yield(:title)} - Flickr4Twitter" %></title>
-  <style type="text/css" media="screen">@import "jqtouch.min.css";</style>
-  <style type="text/css" media="screen">@import "jqt_theme.min.css";</style>
-  <script src="jqtouch.min.js" type="application/x-javascript" charset="utf-8"></script>
+  <%= stylesheet_link_tag 'jqtouch.min.css', :media => 'screen' %>
+  <%= stylesheet_link_tag 'jqt_theme.min.css', :media => 'screen' %>
+  <%= javascript_include_tag 'jqtouch.min.js' %>
+  <%= javascript_include_tag 'iphone.js' %>
 </head>
 <body>
     <div class="toolbar">
@@ -15,5 +16,6 @@
     </div>
 
     <%= yield %>
+    
 </body>
 </html>
