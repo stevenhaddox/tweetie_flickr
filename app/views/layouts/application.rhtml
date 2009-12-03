@@ -3,13 +3,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-	<title><%= yield(:title).blank? ? 'Flickr4Twitter' : "#{yield(:title)} - Flickr4Twitter" %></title>
+  <title><%= yield(:title).blank? ? 'Flickr4Twitter' : "#{yield(:title)} - Flickr4Twitter" %></title>
 
-	<%= stylesheet_link_tag 'blueprint/screen.css', 'formtastic.css', :media => 'screen, projection' %>
-	<%= stylesheet_link_tag 'application.css', :media => 'screen, projection' %>
-	<%= stylesheet_link_tag 'blueprint/print.css', :media => 'print' %>
+  <%= stylesheet_link_tag 'blueprint/screen.css', 'formtastic.css', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'application.css', :media => 'screen, projection' %>
+  <%= stylesheet_link_tag 'blueprint/print.css', :media => 'print' %>
   <%- if request.env['HTTP_USER_AGENT'] =~ /MSIE/ -%>
     <!--[if lt IE 8]>
       <%= stylesheet_link_tag 'blueprint/ie.css', :media => 'screen,projection' %>
