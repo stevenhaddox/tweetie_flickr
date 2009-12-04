@@ -12,7 +12,7 @@
   <%- end -%>
   
   <div class="user_meta span-6">
-    <h2>
+    <h2 class="page_title">
   	 	<%= link_to @user.twitter_username, "http://twitter.com/#{@user.twitter_username}" %><br />
     	<%= link_to image_tag(@user.avatar_url('b'), :alt=>"#{@user.twitter_username}'s Avatar", :title=>"#{@user.twitter_username}", :class=>'avatar'), "http://twitter.com/#{@user.twitter_username}" %>
   	 </h2>

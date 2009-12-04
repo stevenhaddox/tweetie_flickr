@@ -1,6 +1,6 @@
 <%- content_for :title do -%>Users<%- end -%>
 <div id="users">
-  <h2>Twitter Users on Flickr4Twitter</h2>
+  <h2 class="page_title">Twitter Users on Flickr4Twitter</h2>
   <%- if !@users.blank? -%>
     <%- for user in @users -%>
       <% div_for user, :class=>"span-4" do %>

@@ -21,15 +21,18 @@
   <%= javascript_include_tag 'jquery.galleriffic.js' %>
   <%= javascript_include_tag 'jquery.opacityrollover.js' %>
   <%= javascript_include_tag 'application.js' %>
+  <%# typekit includes %>
+  <%= javascript_include_tag 'http://use.typekit.com/aho1eia.js' %>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 </head>
 
 <body>
-  <div id="header">
-    <h1>Flickr4Twitter.com</h1>
+  <div id="header" class="font_droid">
+    <h1><%= link_to 'Flickr4Twitter.com', page_url %></h1>
     <%= render :partial => 'layouts/menu' %>
   </div>
   
-  <div class="container" id="main_content">    
+  <div class="container font_droid" id="main_content">
     <div class="span-3" id="left_column">
       <%- if current_user -%>
         <%= render :partial => 'layouts/user_menu' %>
@@ -42,7 +45,7 @@
       <%= yield %>
     </div>
     <div id="host_ad">
-      <a href="http://www.rackspacecloud.com" style="text-decoration:none;  font-family:Arial, Helvetica, sans-serif; font-size:12px; text-align: center; display: block;"><img alt="Cloud Computing" src="http://cdn.cloudfiles.mosso.com/c110782/the-rackspace-cloud-125-wide.png" border="0"/><br />Cloud Computing</a>
+      <a href="http://www.rackspacecloud.com" class="font_droid" style="text-decoration:none; font-size:12px; text-align: center; display: block;"><img alt="Cloud Computing" src="http://cdn.cloudfiles.mosso.com/c110782/the-rackspace-cloud-125-wide.png" border="0"/><br />Cloud Computing</a>
     </div>
   </div>
 

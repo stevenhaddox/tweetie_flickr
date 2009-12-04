@@ -10,6 +10,7 @@
 @gray_dark: #AAA;
 @gray_light: #DDD;
 @header_color: #77A6D4; /* #25AEF5 */
+@header_font_color: #32699F;
 @background_color: #FFF;
 
 /* ========== */
@@ -40,6 +41,11 @@ div#host_ad {
 /* = General styles = */
 /* ================== */
 #header { background-color: @header_color; }
+#header h1 { font-size: 4em; padding: 0.5em 0 0 10px; }
+#header h1 a { 
+  color: @header_font_color;
+  text-shadow: 0 1px 0 rgba(255,255,255,.6);
+}
 a:link, a:visited { color: @pink_dark; text-decoration: none; }
 a:hover { color: @blue_dark; }
 
