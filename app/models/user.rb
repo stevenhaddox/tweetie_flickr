@@ -81,6 +81,7 @@ class User < ActiveRecord::Base
   end
 
   def custom_client_hash=(custom_client_hash_str=nil)
+    return if custom_client_hash == custom_client_hash_str # don't change the hash if it is the same as current
     if custom_client_hash_str.blank?
       write_attribute(:custom_client_hash, nil)
       return

@@ -39,11 +39,13 @@ class UsersController < ApplicationController
           params[:user][:flickr_user_id] = new_flickr_id
         end
       end
-      if params[:user][:reset_custom_client_hash]==true
-        params[:user][:custom_client_hash]=nil
-      else 
-        params[:user][:custom_client_hash]=params[:user][:new_custom_client_hash] unless params[:user][:new_custom_client_hash].blank?
+      # either reset / update custom_client_hash - can't do both
+      if params[:user][:reset_custom_client_hash].to_i == 1
+        @user.update_attribute(:custom_client_hash, nil)
+      else
+        params[:user][:custom_client_hash]=params[:user][:new_custom_client_hash] if params[:user][:new_custom_client_hash]
       end
+
       @user.update_attributes(params[:user])
     end
     unless @user.flickr_token
