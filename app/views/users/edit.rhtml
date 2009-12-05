@@ -9,7 +9,7 @@
     <%- form.inputs :name => 'Flickr', :id => 'flickr' do -%>
       <%= form.input :flickr_username, :label => 'Flickr Username', :required => true, :hint => 'http://flickr.com/people/<strong>username</strong>/' %>
       <%= form.input :flickr_user_id, :label => 'Flickr ID', :required => false, :input_html => { :disabled => true, :class => 'disabled' } %>
-      <%= form.input :flickr_title, :as => :boolean, :label => 'Use Tweet as Title?', :required => false %>
+      <%#= form.input :flickr_title, :as => :boolean, :label => 'Use Tweet as Title?', :required => false %>
     <%- end -%>
 
     <%- form.inputs :name => 'Client', :id => 'client' do -%>
