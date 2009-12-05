@@ -82,8 +82,14 @@ class Photo < ActiveRecord::Base
   
   def upload_to_flickr
     if image && !uploaded?
+      if user.flickr_title
+        escaped_caption = caption.gsub('#','')
+        title = escaped_caption ? escaped_caption : caption
+      else
+        title = Time.now.utc.strftime("%e %b %Y")
+      end
       rsp = flickr_api.uploader.upload(image.path, 
-              :title => Time.now.utc.strftime("%e %b %Y"), 
+              :title => title,
               :tags => "iphone,flickr4twitter", 
               :is_public => !user.test_user?
             )
@@ -95,7 +101,7 @@ class Photo < ActiveRecord::Base
   # Update the description on flickr
   def update_flickr_description
     if caption_changed? && flickr_image
-      description = caption.to_s
+      description = caption.to_s unless user.flickr_title
       description += "\n\nTwitter: #{tweet_url}" if tweet_url
       flickr_image.set_meta(:description => description)
       flickr_image.add_tags(tags.join(',')) unless tags.empty?

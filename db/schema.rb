@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091024050212) do
+ActiveRecord::Schema.define(:version => 20091204225707) do
 
   create_table "photos", :force => true do |t|
     t.string   "flickr_id"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20091024050212) do
     t.string   "client_hash"
     t.string   "custom_client_hash"
     t.string   "flickr_username"
+    t.boolean  "flickr_title"
   end
 
   add_index "users", ["client_hash"], :name => "index_users_on_client_hash"
