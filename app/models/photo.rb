@@ -83,8 +83,7 @@ class Photo < ActiveRecord::Base
   def upload_to_flickr
     if image && !uploaded?
       if user.flickr_title
-        escaped_caption = caption.gsub('#','')
-        title = escaped_caption ? escaped_caption : caption
+        title = caption.blank? ? caption : caption.gsub('#','')
       else
         title = Time.now.utc.strftime("%e %b %Y")
       end
