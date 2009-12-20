@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Twitter::AuthenticationHelpers
   before_filter :check_flickr_auth
-  before_filter :set_iphone_format
+  #before_filter :set_iphone_format
 
   include SslRequirement
 
