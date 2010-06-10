@@ -1,2 +1,7 @@
-commonthread-flickr_fu --source gems.github.com
+flickr_fu
+formtastic
 jnunemaker-twitter --source gems.github.com
+less
+nokogiri
+uuid
+will_paginate
