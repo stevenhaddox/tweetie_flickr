@@ -24,7 +24,7 @@ Rails::Initializer.run do |config|
   config.gem 'formtastic', :source => 'http://gemcutter.org'
   config.gem 'will_paginate', :version => '~> 2.3.11', :source => 'http://gemcutter.org'
   #config.gem 'less', :source => 'http://gems.rubyforge.org/'
-  #config.gem 'less', :version => '~> 1.2.11', :source => 'http://gemcutter.org'
+  config.gem 'less', :version => '~> 1.2.11', :source => 'http://gemcutter.org'
   config.gem 'uuid'
   config.gem 'nokogiri'
   
