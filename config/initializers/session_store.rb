@@ -4,13 +4,11 @@
 # If you change this key, all old sessions will become invalid!
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
-secret = File.read(File.join(RAILS_ROOT, 'config/secret')).strip
-unless secret
-  if Rails.env == 'production'
-    secret = ENV['SECRET']
-  else
-    secret = ENV['F4T_SECRET']
-  end
+if Rails.env == 'production'
+  secret = ENV['SECRET']
+else
+  secret = File.read(File.join(RAILS_ROOT, 'config/secret')).strip
+  secret = ENV['F4T_SECRET'] unless secret
 end
 
 ActionController::Base.session = {
