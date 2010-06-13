@@ -40,7 +40,20 @@ END_TWITTER
       file.write twitter_config
     end
   end
-  
+
+  desc 'Push _local_ ENV config settings to heroku'
+  task :heroku do
+    ENV_VARS = {
+      'FLICKR_KEY' => ENV['F4T_FLICKR_KEY'],
+      'FLICKR_SECRET' => ENV['F4T_FLICKR_SECRET'],
+      'SECRET' => File.read("#{Rails.root}/config/secret"),
+      'TWITTER_TOKEN' => ENV['F4T_TWITTER_TOKEN'],
+      'TWITTER_SECRET' => ENV['F4T_TWITTER_SECRET']
+    }
+    command = "heroku config:add"
+    ENV_VARS.each {|key, val| command << " #{key}=#{val} " if val }
+    system command
+  end  
   
 end
 
