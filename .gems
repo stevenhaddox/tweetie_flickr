@@ -1,6 +1,6 @@
 rails -v 2.3.8
-flickr_fu
-formtastic
+commonthread-flickr_fu --source gems.github.com
+formtastic --ignore-dependencies
 jnunemaker-twitter --source gems.github.com
 less
 nokogiri
