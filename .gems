@@ -1,8 +1,8 @@
+rails -v 2.3.8
 flickr_fu
 formtastic
 jnunemaker-twitter --source gems.github.com
 less
 nokogiri
-rails -v 2.3.4
 uuid
 will_paginate
