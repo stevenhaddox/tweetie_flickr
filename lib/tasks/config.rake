@@ -60,7 +60,7 @@ END_TWITTER
   task :css => :environment do
     puts "Compiling *.less stylesheets before deploy"
     Rake::Task["more:clean"].invoke
-    Rake::Task["more:parse"].invoke
+    Rake::Task["more:generate"].invoke
   end
   
 end
