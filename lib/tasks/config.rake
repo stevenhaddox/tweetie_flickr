@@ -3,11 +3,12 @@ namespace :config do
   task :init do
     Rake::Task["config:flickr"].invoke
     Rake::Task["config:twitter"].invoke
+    Rake::Task["config:css"].invoke
   end
   
   desc 'Generate flickr.yml config file'
   task :flickr do
-    if Rails.env == 'production'
+    if Rails.env.production?
       FLICKR_KEY = ENV['FLICKR_KEY']
       FLICKR_SECRET = ENV['FLICKR_SECRET']
     else
@@ -25,7 +26,7 @@ END_FLICKR
 
   desc 'Generate twitter.yml config file'
   task :twitter do
-    if Rails.env == 'production'
+    if Rails.env.production?
       TWITTER_TOKEN = ENV['TWITTER_TOKEN']
       TWITTER_SECRET = ENV['TWITTER_SECRET']
     else
@@ -54,6 +55,13 @@ END_TWITTER
     ENV_VARS.each {|key, val| command << " #{key}=#{val} " if val }
     system command
   end  
+
+  desc 'Generate our less CSS files before commit'
+  task :css => :environment do
+    puts "Compiling *.less stylesheets before deploy"
+    Rake::Task["more:clean"].invoke
+    Rake::Task["more:parse"].invoke
+  end
   
 end
 

@@ -1,4 +1,4 @@
-if Rails.env == 'production'
+if Rails.env.production?
   FLICKR_KEY = ENV['FLICKR_KEY']
   FLICKR_SECRET = ENV['FLICKR_SECRET']
 else

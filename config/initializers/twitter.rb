@@ -1,4 +1,4 @@
-if Rails.env == 'production'
+if Rails.env.production?
   TWITTER_TOKEN = ENV['TWITTER_TOKEN']
   TWITTER_SECRET = ENV['TWITTER_SECRET']
 else
