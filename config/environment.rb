@@ -27,6 +27,7 @@ Rails::Initializer.run do |config|
   #config.gem 'less', :version => '~> 1.2.11', :source => 'http://gemcutter.org'
   config.gem 'uuid'
   config.gem 'nokogiri'
+  config.gem 'httparty'
   
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
