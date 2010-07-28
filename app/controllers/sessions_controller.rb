@@ -45,25 +45,6 @@ class SessionsController < ApplicationController
     def oauth
       @oauth ||= Twitter::OAuth.new(TWITTER['token'], TWITTER['secret'], :sign_in => true)
     end
-
-    def _authenticate_oauth_echo
-      require 'httparty'
-      # header auth only for now; also lock down the auth provider endpoint so we can't spoof
-      if(request.env["HTTP_X_AUTH_SERVICE_PROVIDER"] != 'https://api.twitter.com/1/account/verify_credentials.json' || request.env["HTTP_X_AUTH_SERVICE_PROVIDER"].blank?)
-        return false
-      else
-        auth_service_provider = request.env["HTTP_X_AUTH_SERVICE_PROVIDER"]
-        verify_credentials_authorization = request.env["HTTP_X_VERIFY_CREDENTIALS_AUTHORIZATION"]
-      end
-
-      auth_response = HTTParty.get(auth_service_provider, :format => :json, :headers => {'Authorization' => verify_credentials_authorization}) rescue nil
-      if !auth_response['screen_name'].blank?
-        current_user = User.find(:first, :conditions => {:login => auth_response['screen_name']})
-        return current_user
-      end
-      logger.info(auth_response)
-      return false
-    end
     
 end
 
