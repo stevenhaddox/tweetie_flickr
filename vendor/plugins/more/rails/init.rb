@@ -1,1 +1,6 @@
-require File.join(File.dirname(__FILE__), '..', 'lib', 'less', 'controller_extension') if RAILS_ENV == 'development'
+require File.join(File.dirname(__FILE__), '..', 'lib', 'more')
+
+config.after_initialize {
+  Less::More.clean
+  Less::More.parse if Less::More.page_cache?
+}

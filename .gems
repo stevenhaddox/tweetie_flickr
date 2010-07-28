@@ -1,8 +1,0 @@
-rails -v 2.3.8
-commonthread-flickr_fu --source gems.github.com
-formtastic --ignore-dependencies
-jnunemaker-twitter --source gems.github.com
-less
-nokogiri
-uuid
-will_paginate

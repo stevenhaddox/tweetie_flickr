@@ -109,6 +109,6 @@ private
   end
 
   def check_login
-    return true unless current_user.blank?
+    return true if current_user
     redirect_to login_path #redirect to a non SSL page to ensure we don't throw an error
   end

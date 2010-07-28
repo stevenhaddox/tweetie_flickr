@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   include Twitter::AuthenticationHelpers
-  skip_before_filter :generate_css_from_less if Rails.env.production?
   before_filter :check_flickr_auth
   #before_filter :set_iphone_format
 

@@ -73,19 +73,19 @@ Any `.css` file placed in `app/stylesheets` will be copied into `public/styleshe
 Configuration
 =============
 
-Source path: the location of your LESS files (default: app/stylesheets)
+To set the source path (the location of your LESS files):
 
-	Less::More.source_path = "public/stylesheets/less"
+	Less::More.source_path = "/path/to/less/files"
 	
-Destination Path: where the css goes (public/destination_path) (default: stylesheets)
+You can also set the destination path. Be careful with the formatting here, since this is in fact a route, and not a regular path.
 
 	Less::More.destination_path = "css"
 
-More can compress your files by removing extra line breaks (default: true)
+More can compress your files by removing extra line breaks. This is enabled by default in the `production` environment. To change this setting, set:
 
-	Less::More.compression = false
+	Less::More.compression = true
 
-More inserts headers in the generated CSS files, letting people know that the file is in fact generated and shouldn't be edited directly. (default: true)
+More inserts headers in the generated CSS files, letting people know that the file is in fact generated and shouldn't be edited directly. This is by default only enabled in development mode. You can disable this behavior if you want to.
 
 	Less::More.header = false
 
@@ -93,6 +93,12 @@ To configure More for a specific environment, add configuration options into the
 
 If you wish to apply the configuration to all environments, place them in `config/environment.rb`.
 
+Heroku
+======
+
+The plugin works out-of-the-box on Heroku.
+
+Heroku has a read-only file system, which means caching the generated CSS with page caching is not an option. Heroku supports caching with Varnish, though, which the plugin will leverage by setting Cache-Control headers so that generated CSS is cached for one month.
 
 Tasks
 =====
@@ -101,7 +107,7 @@ More provides a set of Rake tasks to help manage your CSS files.
 
 To parse all LESS files and save the resulting CSS files to the destination path, run:
 
-	$ rake more:generate
+	$ rake more:parse
 
 To delete all generated CSS files, run:
 
@@ -110,10 +116,13 @@ To delete all generated CSS files, run:
 This task will not delete any CSS files from the destination path, that does not have a corresponding LESS file in the source path.
 
 
-Git / SVN
-=========
+Git
+===
 
-Check in all the generated css(destination path), they are only generated in development
+If you are using git to version control your code and LESS for all your stylesheets, you can add this entry to your `.gitignore` file:
+
+	public/stylesheets
+
 
 Documentation
 =============
@@ -125,6 +134,5 @@ Contributors
 ============
 * August Lilleaas ([http://github.com/augustl](http://github.com/augustl))
 * Logan Raarup ([http://github.com/logandk](http://github.com/logandk))
-* Michael Grosser ([http://github.com/grosser](http://github.com/grosser))
 
 LESS is maintained by Alexis Sellier [http://github.com/cloudhead](http://github.com/cloudhead)

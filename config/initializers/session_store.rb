@@ -4,16 +4,9 @@
 # If you change this key, all old sessions will become invalid!
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
-if Rails.env.production?
-  secret = ENV['SECRET']
-else
-  secret = File.read(File.join(RAILS_ROOT, 'config/secret')).strip
-  secret = ENV['F4T_SECRET'] unless secret
-end
-
 ActionController::Base.session = {
-  :key         => '_flickr4twitter_session',
-  :secret      => secret
+  :key         => '_tweetie_flickr_session',
+  :secret      => File.read(File.join(RAILS_ROOT, 'config/secret')).strip
 }
 
 # Use the database for sessions instead of the cookie-based default,
