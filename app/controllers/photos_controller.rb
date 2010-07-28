@@ -109,21 +109,6 @@ private
   end
 
   def check_login
-    require 'httparty'
-    # header auth only for now; also lock down the auth provider endpoint so we can't spoof
-    if(request.env["HTTP_X_AUTH_SERVICE_PROVIDER"] != 'https://api.twitter.com/1/account/verify_credentials.json' || request.env["HTTP_X_AUTH_SERVICE_PROVIDER"].blank?)
-      current_user = nil
-    else
-      auth_service_provider = request.env["HTTP_X_AUTH_SERVICE_PROVIDER"]
-      verify_credentials_authorization = request.env["HTTP_X_VERIFY_CREDENTIALS_AUTHORIZATION"]
-    end
-
-    auth_response = HTTParty.get(auth_service_provider, :format => :json, :headers => {'Authorization' => verify_credentials_authorization}) rescue nil
-    if !auth_response['screen_name'].blank?
-      current_user = User.find(:first, :conditions => {:login => auth_response['screen_name']})
-    end
-    logger.info(auth_response)
-
     return true unless current_user.blank?
     redirect_to login_path #redirect to a non SSL page to ensure we don't throw an error
   end
